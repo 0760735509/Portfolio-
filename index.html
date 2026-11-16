@@ -7,7 +7,467 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --header-bg: rgba(255, 255, 255, 0.92);
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --border: #e2e8f0;
+      --badge-bg: #eff6ff;
+      --badge-text: #1e40af;
+      --shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+    }
+
+    body.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --header-bg: rgba(15, 23, 42, 0.92);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --border: #334155;
+      --badge-bg: rgba(59, 130, 246, 0.15);
+      --badge-text: #93c5fd;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--header-bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.35rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 1.35rem;
+    }
+
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid var(--primary);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg);
+      border-color: var(--primary);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 2.75rem;
+      scroll-margin-top: 85px;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--primary);
+    }
+
+    .card-subtitle {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .edu-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .edu-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .muted-date {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .reference-note {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .job-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .job-company {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .job-date {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--bg);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .card ul {
+      padding-left: 1.25rem;
+      color: var(--muted);
+    }
+
+    .card li {
+      margin-bottom: 0.45rem;
+    }
+
+    /* Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Skills Badges */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .skill-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 0.95rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .skill-badge:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Contact Form */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 2rem;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .contact-detail {
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-detail strong {
+      display: block;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: var(--surface);
+    }
+
+    .form-status {
+      margin-top: 0.85rem;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .form-status.success {
+      color: #16a34a;
+    }
+
+    .form-status.error {
+      color: #dc2626;
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mobile-only {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 1.5rem;
+      }
+
+      nav.open {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+
+      .hero {
+        padding: 1.75rem;
+      }
+
+      .hero h1 {
+        font-size: 1.85rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -39,12 +499,12 @@
       <span class="hero-tag">IT Technician &amp; Team Leader</span>
       <h1>Comfort Mabelane</h1>
       <p class="hero-subtitle">
-        Dedicated IT Technician with a National Diploma in Information Technology and 2 years of experience in ICT end-user support and desktop technical support[span_1](start_span)[span_1](end_span). Proven in setup, configuration, and installation of hardware, software, and hardware maintenance, resolving faults within SLAs[span_2](start_span)[span_2](end_span).
+        Dedicated IT Technician with National Diploma in Information Technology and 2 years experience in ICT end user support and desktop technical support. Proven in setup, configuration and installation of hardware, software and hardware maintenance, resolving faults within SLA[span_0](start_span)[span_0](end_span).
       </p>
       <div class="hero-contact">
-        <span>📍 101 Francis Baard, Pretoria, 0001[span_3](start_span)[span_3](end_span)</span>
-        <span>📞 083 500 1655[span_4](start_span)[span_4](end_span)</span>
-        <span>✉️ Kgwadusenny@gmail.com[span_5](start_span)[span_5](end_span)</span>
+        <span>📍 101 Francis baard Pretoria 0001[span_1](start_span)[span_1](end_span)</span>
+        <span>📞 083 500 1655[span_2](start_span)[span_2](end_span)</span>
+        <span>✉️ Kgwadusenny@gmail.com[span_3](start_span)[span_3](end_span)</span>
       </div>
       <div class="hero-buttons">
         <a href="#contact" class="btn">Get in Touch</a>
@@ -59,32 +519,35 @@
       <div class="card">
         <div class="job-header">
           <div>
-            <div class="job-title">Team Leader[span_6](start_span)[span_6](end_span)</div>
-            <div class="job-company">Department of Home Affairs[span_7](start_span)[span_7](end_span)</div>
+            <div class="job-title">Team leader[span_4](start_span)[span_4](end_span)</div>
+            <div class="job-company">Department of home affairs[span_5](start_span)[span_5](end_span)</div>
           </div>
-          <span class="job-date">Feb 2024 – Mar 2026[span_8](start_span)[span_8](end_span)</span>
+          <span class="job-date">Feb 2024 - Mar 2026[span_6](start_span)[span_6](end_span)</span>
         </div>
         <ul>
-          <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment[span_9](start_span)[span_9](end_span).</li>
-          <li>Providing guidance and support while keeping the team informed about changes, updates, and important information[span_10](start_span)[span_10](end_span).</li>
-          <li>Tracking progress by regularly reviewing the team's performance and productivity, and maintaining necessary records, reports, and documentation[span_11](start_span)[span_11](end_span).</li>
-          <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements[span_12](start_span)[span_12](end_span).</li>
+          <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment[span_7](start_span)[span_7](end_span).</li>
+          <li>Providing Guidance and Support. Keep the team informed about changes, updates, and important information[span_8](start_span)[span_8](end_span).</li>
+          <li>Tracking Progress by regularly reviewing the team's performance and productivity[span_9](start_span)[span_9](end_span).</li>
+          <li>Maintaining necessary records, reports, and documentation related to team performance and activities[span_10](start_span)[span_10](end_span).</li>
+          <li>Provide regular updates and reports to upper management on team performance, challenges, and achievements[span_11](start_span)[span_11](end_span).</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="job-header">
           <div>
-            <div class="job-title">IT Help Desk &amp; Support[span_13](start_span)[span_13](end_span)</div>
-            <div class="job-company">LEDET[span_14](start_span)[span_14](end_span)</div>
+            <div class="job-title">IT help desk &amp; support[span_12](start_span)[span_12](end_span)</div>
+            <div class="job-company">Ledet[span_13](start_span)[span_13](end_span)</div>
           </div>
-          <span class="job-date">Mar 2021 – Oct 2023[span_15](start_span)[span_15](end_span)</span>
+          <span class="job-date">Mar 2021 Oct 2023[span_14](start_span)[span_14](end_span)</span>
         </div>
         <ul>
-          <li>Set up, configured, and installed new hardware equipment and peripherals to LAN[span_16](start_span)[span_16](end_span).</li>
-          <li>Performed software and hardware maintenance and maintained an inventory of hardware devices[span_17](start_span)[span_17](end_span).</li>
-          <li>Provided efficient technical support to all end users and investigated and resolved hardware and software faults[span_18](start_span)[span_18](end_span).</li>
-          <li>Ensured daily service-level agreements were met[span_19](start_span)[span_19](end_span).</li>
+          <li>Set up, configure and install new hardware equipment and peripherals to LAN[span_15](start_span)[span_15](end_span).</li>
+          <li>Perform software and hardware maintenance[span_16](start_span)[span_16](end_span).</li>
+          <li>Provide efficient technical support to all end users[span_17](start_span)[span_17](end_span).</li>
+          <li>Maintain inventory of hardware devices[span_18](start_span)[span_18](end_span).</li>
+          <li>Investigate and resolve hardware and software faults[span_19](start_span)[span_19](end_span).</li>
+          <li>Ensure daily service-level agreements are met[span_20](start_span)[span_20](end_span).</li>
         </ul>
       </div>
     </section>
@@ -96,26 +559,26 @@
         <div class="card">
           <h3 class="card-subtitle">Education</h3>
           <div class="edu-item">
-            <div class="job-title">National Diploma in Information Technology[span_20](start_span)[span_20](end_span)</div>
-            <div class="job-company">Tshwane University of Technology[span_21](start_span)[span_21](end_span)</div>
-            <div class="muted-date">2017 – 2022[span_22](start_span)[span_22](end_span)</div>
+            <div class="job-title">National Diploma In Information Technology[span_21](start_span)[span_21](end_span)</div>
+            <div class="job-company">Tshwane University Of Technology[span_22](start_span)[span_22](end_span)</div>
+            <div class="muted-date">2017-2022[span_23](start_span)[span_23](end_span)</div>
           </div>
           <div class="edu-item">
-            <div class="job-title">NSC[span_23](start_span)[span_23](end_span)</div>
-            <div class="job-company">Makgoka High School[span_24](start_span)[span_24](end_span)</div>
-            <div class="muted-date">2012 – 2016[span_25](start_span)[span_25](end_span)</div>
+            <div class="job-title">NSC[span_24](start_span)[span_24](end_span)</div>
+            <div class="job-company">Makgoka high school[span_25](start_span)[span_25](end_span)</div>
+            <div class="muted-date">2012-2016[span_26](start_span)[span_26](end_span)</div>
           </div>
         </div>
 
         <div class="card">
           <h3 class="card-subtitle">Certificates</h3>
           <ul>
-            <li><strong>AWS Cloud Practitioner</strong>[span_26](start_span)[span_26](end_span)</li>
-            <li><strong>Google AI Essentials</strong>[span_27](start_span)[span_27](end_span)</li>
-            <li><strong>ICDL Profile Certificate</strong>[span_28](start_span)[span_28](end_span)</li>
+            <li><strong>AWS cloud practitioner</strong>[span_27](start_span)[span_27](end_span)</li>
+            <li><strong>ICDL profile certificate</strong>[span_28](start_span)[span_28](end_span)</li>
+            <li><strong>Google AI Essentials</strong>[span_29](start_span)[span_29](end_span)</li>
           </ul>
           <p class="reference-note">
-            <em>References: Upon Request[span_29](start_span)[span_29](end_span)</em>
+            <em>Reference: Upon Request[span_30](start_span)[span_30](end_span)</em>
           </p>
         </div>
       </div>
@@ -125,17 +588,15 @@
     <section id="skills" class="reveal">
       <h2 class="section-title">Technical &amp; Professional Skills</h2>
       <div class="skills-wrap">
-        <span class="skill-badge">Hardware &amp; Software Installation[span_30](start_span)[span_30](end_span)</span>
-        <span class="skill-badge">Windows Server / Desktop[span_31](start_span)[span_31](end_span)</span>
-        <span class="skill-badge">Printer / Network Troubleshooting &amp; LAN[span_32](start_span)[span_32](end_span)</span>
-        <span class="skill-badge">Microsoft 365 &amp; MS Office[span_33](start_span)[span_33](end_span)</span>
-        <span class="skill-badge">MySQL[span_34](start_span)[span_34](end_span)</span>
-        <span class="skill-badge">PostgreSQL[span_35](start_span)[span_35](end_span)</span>
-        <span class="skill-badge">VS Code[span_36](start_span)[span_36](end_span)</span>
-        <span class="skill-badge">Task Tracking[span_37](start_span)[span_37](end_span)</span>
-        <span class="skill-badge">Communication Skills[span_38](start_span)[span_38](end_span)</span>
-        <span class="skill-badge">Teamwork[span_39](start_span)[span_39](end_span)</span>
-        <span class="skill-badge">Attention to Detail[span_40](start_span)[span_40](end_span)</span>
+        <span class="skill-badge">Communication skills[span_31](start_span)[span_31](end_span)</span>
+        <span class="skill-badge">Task tracking[span_32](start_span)[span_32](end_span)</span>
+        <span class="skill-badge">Microsoft 365, MS Office, VS Code[span_33](start_span)[span_33](end_span)</span>
+        <span class="skill-badge">Attention to detail[span_34](start_span)[span_34](end_span)</span>
+        <span class="skill-badge">Printer/Network Troubleshooting[span_35](start_span)[span_35](end_span)</span>
+        <span class="skill-badge">Teamwork[span_36](start_span)[span_36](end_span)</span>
+        <span class="skill-badge">MySQL, PostgreSQL[span_37](start_span)[span_37](end_span)</span>
+        <span class="skill-badge">Hardware &amp; Software Installation, LAN[span_38](start_span)[span_38](end_span)</span>
+        <span class="skill-badge">Windows Server/Desktop[span_39](start_span)[span_39](end_span)</span>
       </div>
     </section>
 
@@ -148,15 +609,15 @@
             <p>Have a question, inquiry, or professional opportunity? Fill out the form and it will be sent straight to my inbox.</p>
             <div class="contact-detail">
               <strong>Email</strong>
-              Kgwadusenny@gmail.com[span_41](start_span)[span_41](end_span)
+              Kgwadusenny@gmail.com[span_40](start_span)[span_40](end_span)
             </div>
             <div class="contact-detail">
               <strong>Phone</strong>
-              083 500 1655[span_42](start_span)[span_42](end_span)
+              083 500 1655[span_41](start_span)[span_41](end_span)
             </div>
             <div class="contact-detail">
               <strong>Location</strong>
-              101 Francis Baard, Pretoria, 0001[span_43](start_span)[span_43](end_span)
+              101 Francis baard Pretoria 0001[span_42](start_span)[span_42](end_span)
             </div>
           </div>
 
@@ -193,6 +654,106 @@
     &copy; 2026 Comfort Mabelane. All rights reserved.
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const savedTheme = localStorage.getItem('portfolio-theme');
+
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeToggle.textContent = '☀️';
+      }
+
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        themeToggle.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
+      });
+
+      const menuToggle = document.getElementById('menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('open');
+        });
+      });
+
+      const copyEmailBtn = document.getElementById('copy-email-btn');
+      copyEmailBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('Kgwadusenny@gmail.com').then(() => {
+          const originalText = copyEmailBtn.textContent;
+          copyEmailBtn.textContent = 'Email Copied!';
+          setTimeout(() => {
+            copyEmailBtn.textContent = originalText;
+          }, 2500);
+        });
+      });
+
+      const sections = document.querySelectorAll('section');
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+
+              const id = entry.target.getAttribute('id');
+              navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+              });
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      sections.forEach(section => observer.observe(section));
+
+      const contactForm = document.getElementById('contact-form');
+      const formStatus = document.getElementById('form-status');
+      const submitBtn = document.getElementById('submit-btn');
+
+      contactForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+
+        const formData = new FormData(contactForm);
+
+        try {
+          const response = await fetch(contactForm.action, {
+            method: contactForm.method,
+            body: formData,
+            headers: {
+              Accept: 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            formStatus.textContent = 'Thank you! Your message has been sent to Comfort.';
+            formStatus.classList.add('success');
+            contactForm.reset();
+          } else {
+            formStatus.textContent = 'Oops! There was a problem submitting your form. Please try again.';
+            formStatus.classList.add('error');
+          }
+        } catch (error) {
+          formStatus.textContent = 'Network error. Please check your connection and try again.';
+          formStatus.classList.add('error');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
