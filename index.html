@@ -6,34 +6,42 @@
   <title>Comfort Mabelane | IT Technician & Team Leader</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #f8fafc;
       --surface: #ffffff;
-      --header-bg: rgba(255, 255, 255, 0.92);
       --text: #0f172a;
-      --muted: #475569;
+      --muted: #64748b;
       --primary: #2563eb;
       --primary-dark: #1d4ed8;
+      --accent-gradient: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+      --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      --hero-text: #ffffff;
+      --hero-muted: #94a3b8;
       --border: #e2e8f0;
-      --badge-bg: #eff6ff;
-      --badge-text: #1e40af;
-      --shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+      --card-bg: #ffffff;
+      --badge-bg: rgba(37, 99, 235, 0.1);
+      --badge-text: #2563eb;
+      --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.05);
     }
 
     body.dark-mode {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --header-bg: rgba(15, 23, 42, 0.92);
-      --text: #f8fafc;
-      --muted: #94a3b8;
+      --bg: #030712;
+      --surface: #111827;
+      --text: #f9fafb;
+      --muted: #9ca3af;
       --primary: #3b82f6;
       --primary-dark: #2563eb;
-      --border: #334155;
+      --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+      --hero-bg: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      --hero-text: #f9fafb;
+      --hero-muted: #9ca3af;
+      --border: #1f2937;
+      --card-bg: #111827;
       --badge-bg: rgba(59, 130, 246, 0.15);
       --badge-text: #93c5fd;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3), 0 0 1px 1px rgba(255, 255, 255, 0.05);
     }
 
     * {
@@ -47,7 +55,7 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -58,27 +66,28 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: var(--header-bg);
-      backdrop-filter: blur(8px);
+      z-index: 1000;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      transition: background-color 0.3s ease;
     }
 
     .nav-container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .logo {
-      font-weight: 700;
-      font-size: 1.2rem;
+      font-weight: 800;
+      font-size: 1.3rem;
       color: var(--text);
       text-decoration: none;
+      letter-spacing: -0.5px;
     }
 
     .logo span {
@@ -88,13 +97,13 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
     nav a {
       text-decoration: none;
       color: var(--muted);
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.95rem;
       transition: color 0.2s;
     }
@@ -102,33 +111,32 @@
     nav a:hover,
     nav a.active {
       color: var(--primary);
-      font-weight: 600;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
     }
 
     .icon-btn {
-      background: var(--surface);
+      background: var(--bg);
       border: 1px solid var(--border);
       color: var(--text);
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: all 0.2s;
     }
 
     .icon-btn:hover {
       border-color: var(--primary);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
     .mobile-only {
@@ -137,125 +145,163 @@
 
     /* Main Container */
     main {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+      padding: 3rem 1.5rem 5rem;
     }
 
     /* Hero Section */
     .hero {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 2.5rem;
-      margin-bottom: 2.5rem;
-      box-shadow: var(--shadow);
+      background: var(--hero-bg);
+      color: var(--hero-text);
+      border-radius: 24px;
+      padding: 3.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.2), transparent 50%);
+      pointer-events: none;
     }
 
     .hero-tag {
       display: inline-block;
-      background: var(--badge-bg);
-      color: var(--badge-text);
-      font-weight: 600;
+      background: rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+      font-weight: 700;
       font-size: 0.85rem;
-      padding: 0.35rem 0.85rem;
+      padding: 0.4rem 1rem;
       border-radius: 999px;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     .hero h1 {
-      font-size: 2.35rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
     }
 
     .hero-subtitle {
-      font-size: 1.05rem;
-      color: var(--muted);
-      margin-bottom: 1.35rem;
+      font-size: 1.15rem;
+      color: var(--hero-muted);
+      max-width: 750px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
     }
 
     .hero-contact {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.25rem;
+      gap: 1.5rem;
       font-size: 0.95rem;
-      color: var(--muted);
-      margin-bottom: 1.75rem;
+      color: var(--hero-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-contact span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 1rem;
     }
 
     .btn {
-      display: inline-block;
-      background: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-gradient);
       color: #ffffff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
-      border: 1px solid var(--primary);
+      border: none;
       cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s ease;
     }
 
     .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
     }
 
     .btn-outline {
       background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
+      color: var(--hero-text);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: none;
     }
 
     .btn-outline:hover {
-      background: var(--bg);
-      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--hero-text);
     }
 
     /* Sections */
     section {
-      margin-bottom: 2.75rem;
-      scroll-margin-top: 85px;
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 100px;
     }
 
     .section-title {
-      font-size: 1.45rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border);
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      margin-left: 1rem;
+      border-radius: 2px;
     }
 
     /* Cards */
     .card {
-      background: var(--surface);
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem;
-      margin-bottom: 1.25rem;
+      border-radius: 18px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
       box-shadow: var(--shadow);
       transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .card:hover {
       border-color: var(--primary);
+      transform: translateY(-3px);
     }
 
     .card-subtitle {
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
     }
 
     .edu-item {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     .edu-item:last-child {
@@ -264,13 +310,16 @@
 
     .muted-date {
       font-size: 0.85rem;
+      font-weight: 600;
       color: var(--muted);
+      margin-top: 0.2rem;
     }
 
     .reference-note {
-      margin-top: 1.25rem;
-      font-size: 0.9rem;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
       color: var(--muted);
+      font-style: italic;
     }
 
     .job-header {
@@ -278,29 +327,30 @@
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .job-title {
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       font-weight: 700;
+      color: var(--text);
     }
 
     .job-company {
       color: var(--primary);
-      font-weight: 600;
-      font-size: 0.95rem;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 0.1rem;
     }
 
     .job-date {
       font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--muted);
-      background: var(--bg);
-      padding: 0.25rem 0.65rem;
-      border-radius: 6px;
-      border: 1px solid var(--border);
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--badge-bg);
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
     }
 
     .card ul {
@@ -309,35 +359,39 @@
     }
 
     .card li {
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.98rem;
     }
 
     /* Grid */
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
     }
 
     /* Skills Badges */
     .skills-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.65rem;
+      gap: 0.75rem;
     }
 
     .skill-badge {
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 0.5rem 0.95rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: border-color 0.2s, transform 0.15s;
+      padding: 0.6rem 1.1rem;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+      transition: all 0.2s ease;
     }
 
     .skill-badge:hover {
+      background: var(--badge-bg);
+      color: var(--primary);
       border-color: var(--primary);
       transform: translateY(-2px);
     }
@@ -345,60 +399,67 @@
     /* Contact Form */
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 2rem;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 2.5rem;
     }
 
     .contact-info p {
       color: var(--muted);
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
     }
 
     .contact-detail {
-      margin-bottom: 0.9rem;
-      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
     }
 
     .contact-detail strong {
       display: block;
       color: var(--text);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
     }
 
     .form-group {
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.25rem;
     }
 
     .form-group label {
       display: block;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.9rem;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 0.75rem 0.9rem;
+      padding: 0.85rem 1rem;
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       color: var(--text);
       background: var(--bg);
-      transition: border-color 0.2s, background 0.2s;
+      transition: all 0.2s ease;
     }
 
     .form-group input:focus,
     .form-group textarea:focus {
       outline: none;
       border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
       background: var(--surface);
     }
 
     .form-status {
-      margin-top: 0.85rem;
-      font-size: 0.92rem;
-      font-weight: 500;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      font-weight: 600;
     }
 
     .form-status.success {
@@ -412,8 +473,8 @@
     /* Scroll Reveal Animation */
     .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .reveal.visible {
@@ -423,10 +484,11 @@
 
     footer {
       text-align: center;
-      padding: 2.5rem 1rem;
+      padding: 3rem 1rem;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       border-top: 1px solid var(--border);
+      background: var(--surface);
     }
 
     /* Mobile Responsive */
@@ -447,7 +509,8 @@
         right: 0;
         background: var(--surface);
         border-bottom: 1px solid var(--border);
-        padding: 1rem 1.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
       }
 
       nav.open {
@@ -456,15 +519,15 @@
 
       nav ul {
         flex-direction: column;
-        gap: 0.85rem;
+        gap: 1rem;
       }
 
       .hero {
-        padding: 1.75rem;
+        padding: 2rem 1.5rem;
       }
 
       .hero h1 {
-        font-size: 1.85rem;
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -499,16 +562,16 @@
       <span class="hero-tag">IT Technician &amp; Team Leader</span>
       <h1>Comfort Mabelane</h1>
       <p class="hero-subtitle">
-        Dedicated IT Technician with National Diploma in Information Technology and 2 years experience in ICT end user support and desktop technical support. Proven in setup, configuration and installation of hardware, software and hardware maintenance, resolving faults within SLA[span_0](start_span)[span_0](end_span).
+        Dedicated IT Technician with a National Diploma in Information Technology and 2 years of experience in ICT end-user support and desktop technical support. Proven expertise in setup, configuration, hardware/software installation, maintenance, and resolving faults within SLA.
       </p>
       <div class="hero-contact">
-        <span>📍 101 Francis baard Pretoria 0001[span_1](start_span)[span_1](end_span)</span>
-        <span>📞 083 500 1655[span_2](start_span)[span_2](end_span)</span>
-        <span>✉️ Kgwadusenny@gmail.com[span_3](start_span)[span_3](end_span)</span>
+        <span>📍 101 Francis Baard, Pretoria, 0001</span>
+        <span>📞 083 500 1655</span>
+        <span>✉️ Kgwadusenny@gmail.com</span>
       </div>
       <div class="hero-buttons">
-        <a href="#contact" class="btn">Get in Touch</a>
-        <button id="copy-email-btn" class="btn btn-outline">Copy Email</button>
+        <a href="#contact" class="btn" style="color: #ffffff;">Get in Touch</a>
+        <button id="copy-email-btn" class="btn btn-outline" style="color: #ffffff;">Copy Email</button>
       </div>
     </section>
 
@@ -519,35 +582,35 @@
       <div class="card">
         <div class="job-header">
           <div>
-            <div class="job-title">Team leader[span_4](start_span)[span_4](end_span)</div>
-            <div class="job-company">Department of home affairs[span_5](start_span)[span_5](end_span)</div>
+            <div class="job-title">Team Leader</div>
+            <div class="job-company">Department of Home Affairs</div>
           </div>
-          <span class="job-date">Feb 2024 - Mar 2026[span_6](start_span)[span_6](end_span)</span>
+          <span class="job-date">Feb 2024 - Mar 2026</span>
         </div>
         <ul>
-          <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment[span_7](start_span)[span_7](end_span).</li>
-          <li>Providing Guidance and Support. Keep the team informed about changes, updates, and important information[span_8](start_span)[span_8](end_span).</li>
-          <li>Tracking Progress by regularly reviewing the team's performance and productivity[span_9](start_span)[span_9](end_span).</li>
-          <li>Maintaining necessary records, reports, and documentation related to team performance and activities[span_10](start_span)[span_10](end_span).</li>
-          <li>Provide regular updates and reports to upper management on team performance, challenges, and achievements[span_11](start_span)[span_11](end_span).</li>
+          <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment.</li>
+          <li>Providing guidance and support, keeping the team informed about changes, updates, and important operational information.</li>
+          <li>Tracking progress by regularly reviewing team performance and productivity.</li>
+          <li>Maintaining necessary records, reports, and documentation related to team performance and activities.</li>
+          <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements.</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="job-header">
           <div>
-            <div class="job-title">IT help desk &amp; support[span_12](start_span)[span_12](end_span)</div>
-            <div class="job-company">Ledet[span_13](start_span)[span_13](end_span)</div>
+            <div class="job-title">IT Help Desk &amp; Support</div>
+            <div class="job-company">LEDET</div>
           </div>
-          <span class="job-date">Mar 2021 Oct 2023[span_14](start_span)[span_14](end_span)</span>
+          <span class="job-date">Mar 2021 - Oct 2023</span>
         </div>
         <ul>
-          <li>Set up, configure and install new hardware equipment and peripherals to LAN[span_15](start_span)[span_15](end_span).</li>
-          <li>Perform software and hardware maintenance[span_16](start_span)[span_16](end_span).</li>
-          <li>Provide efficient technical support to all end users[span_17](start_span)[span_17](end_span).</li>
-          <li>Maintain inventory of hardware devices[span_18](start_span)[span_18](end_span).</li>
-          <li>Investigate and resolve hardware and software faults[span_19](start_span)[span_19](end_span).</li>
-          <li>Ensure daily service-level agreements are met[span_20](start_span)[span_20](end_span).</li>
+          <li>Set up, configured, and installed new hardware equipment and peripherals to LAN.</li>
+          <li>Performed routine software and hardware maintenance.</li>
+          <li>Provided efficient technical support to all end users.</li>
+          <li>Maintained inventory of hardware devices.</li>
+          <li>Investigated and resolved hardware and software faults.</li>
+          <li>Ensured daily service-level agreements were consistently met.</li>
         </ul>
       </div>
     </section>
@@ -559,26 +622,26 @@
         <div class="card">
           <h3 class="card-subtitle">Education</h3>
           <div class="edu-item">
-            <div class="job-title">National Diploma In Information Technology[span_21](start_span)[span_21](end_span)</div>
-            <div class="job-company">Tshwane University Of Technology[span_22](start_span)[span_22](end_span)</div>
-            <div class="muted-date">2017-2022[span_23](start_span)[span_23](end_span)</div>
+            <div class="job-title" style="font-size: 1.05rem;">National Diploma in Information Technology</div>
+            <div class="job-company">Tshwane University of Technology</div>
+            <div class="muted-date">2017 - 2022</div>
           </div>
-          <div class="edu-item">
-            <div class="job-title">NSC[span_24](start_span)[span_24](end_span)</div>
-            <div class="job-company">Makgoka high school[span_25](start_span)[span_25](end_span)</div>
-            <div class="muted-date">2012-2016[span_26](start_span)[span_26](end_span)</div>
+          <div class="edu-item" style="margin-top: 1.25rem;">
+            <div class="job-title" style="font-size: 1.05rem;">NSC</div>
+            <div class="job-company">Makgoka High School</div>
+            <div class="muted-date">2012 - 2016</div>
           </div>
         </div>
 
         <div class="card">
           <h3 class="card-subtitle">Certificates</h3>
           <ul>
-            <li><strong>AWS cloud practitioner</strong>[span_27](start_span)[span_27](end_span)</li>
-            <li><strong>ICDL profile certificate</strong>[span_28](start_span)[span_28](end_span)</li>
-            <li><strong>Google AI Essentials</strong>[span_29](start_span)[span_29](end_span)</li>
+            <li><strong>AWS Cloud Practitioner</strong></li>
+            <li><strong>ICDL Profile Certificate</strong></li>
+            <li><strong>Google AI Essentials</strong></li>
           </ul>
           <p class="reference-note">
-            <em>Reference: Upon Request[span_30](start_span)[span_30](end_span)</em>
+            <em>References: Upon Request</em>
           </p>
         </div>
       </div>
@@ -588,15 +651,17 @@
     <section id="skills" class="reveal">
       <h2 class="section-title">Technical &amp; Professional Skills</h2>
       <div class="skills-wrap">
-        <span class="skill-badge">Communication skills[span_31](start_span)[span_31](end_span)</span>
-        <span class="skill-badge">Task tracking[span_32](start_span)[span_32](end_span)</span>
-        <span class="skill-badge">Microsoft 365, MS Office, VS Code[span_33](start_span)[span_33](end_span)</span>
-        <span class="skill-badge">Attention to detail[span_34](start_span)[span_34](end_span)</span>
-        <span class="skill-badge">Printer/Network Troubleshooting[span_35](start_span)[span_35](end_span)</span>
-        <span class="skill-badge">Teamwork[span_36](start_span)[span_36](end_span)</span>
-        <span class="skill-badge">MySQL, PostgreSQL[span_37](start_span)[span_37](end_span)</span>
-        <span class="skill-badge">Hardware &amp; Software Installation, LAN[span_38](start_span)[span_38](end_span)</span>
-        <span class="skill-badge">Windows Server/Desktop[span_39](start_span)[span_39](end_span)</span>
+        <span class="skill-badge">Communication Skills</span>
+        <span class="skill-badge">Task Tracking</span>
+        <span class="skill-badge">Microsoft 365 &amp; MS Office</span>
+        <span class="skill-badge">VS Code</span>
+        <span class="skill-badge">Attention to Detail</span>
+        <span class="skill-badge">Printer &amp; Network Troubleshooting</span>
+        <span class="skill-badge">Teamwork</span>
+        <span class="skill-badge">MySQL &amp; PostgreSQL</span>
+        <span class="skill-badge">Hardware &amp; Software Installation</span>
+        <span class="skill-badge">LAN Setup &amp; Configuration</span>
+        <span class="skill-badge">Windows Server / Desktop</span>
       </div>
     </section>
 
@@ -606,18 +671,18 @@
       <div class="card">
         <div class="contact-grid">
           <div class="contact-info">
-            <p>Have a question, inquiry, or professional opportunity? Fill out the form and it will be sent straight to my inbox.</p>
+            <p>Have an IT support inquiry, professional opportunity, or question? Fill out the form and it will be delivered straight to my inbox.</p>
             <div class="contact-detail">
               <strong>Email</strong>
-              Kgwadusenny@gmail.com[span_40](start_span)[span_40](end_span)
+              Kgwadusenny@gmail.com
             </div>
             <div class="contact-detail">
               <strong>Phone</strong>
-              083 500 1655[span_41](start_span)[span_41](end_span)
+              083 500 1655
             </div>
             <div class="contact-detail">
               <strong>Location</strong>
-              101 Francis baard Pretoria 0001[span_42](start_span)[span_42](end_span)
+              101 Francis Baard, Pretoria, 0001
             </div>
           </div>
 
@@ -642,7 +707,7 @@
               <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
             </div>
 
-            <button type="submit" id="submit-btn" class="btn">Send Message</button>
+            <button type="submit" id="submit-btn" class="btn" style="width: 100%; justify-content: center; color: #ffffff;">Send Message</button>
             <p id="form-status" class="form-status" aria-live="polite"></p>
           </form>
         </div>
@@ -738,7 +803,7 @@
           });
 
           if (response.ok) {
-            formStatus.textContent = 'Thank you! Your message has been sent to Comfort.';
+            formStatus.textContent = 'Thank you! Your message has been sent successfully.';
             formStatus.classList.add('success');
             contactForm.reset();
           } else {
