@@ -12,9 +12,9 @@
       --bg: #070b14;
       --bg-mesh: radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12), transparent 40%),
                  radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.14), transparent 45%);
-      --surface: rgba(15, 23, 42, 0.72);
+      --surface: rgba(15, 23, 42, 0.85);
       --surface-solid: #0f172a;
-      --surface-hover: rgba(30, 41, 59, 0.85);
+      --surface-hover: rgba(30, 41, 59, 0.95);
       --text: #f8fafc;
       --muted: #94a3b8;
       --primary: #38bdf8;
@@ -29,7 +29,7 @@
       --bg: #f1f5f9;
       --bg-mesh: radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.08), transparent 45%),
                  radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.08), transparent 45%);
-      --surface: rgba(255, 255, 255, 0.85);
+      --surface: rgba(255, 255, 255, 0.92);
       --surface-solid: #ffffff;
       --surface-hover: #ffffff;
       --text: #0f172a;
@@ -60,11 +60,13 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Top Navigation Bar */
+    /* Fixed Header Navigation Bar */
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       background: var(--surface);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -88,7 +90,7 @@
       text-decoration: none;
       color: var(--text);
       font-weight: 800;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       letter-spacing: -0.5px;
       cursor: pointer;
     }
@@ -170,13 +172,13 @@
       display: none;
     }
 
-    /* Main Page Container */
+    /* Main Container with top padding to account for fixed header */
     main {
       flex: 1;
       max-width: 1120px;
       width: 100%;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+      padding: calc(5rem + 2.5rem) 1.5rem 4rem;
     }
 
     .page-view {
@@ -569,7 +571,7 @@
     .contact-layout {
       display: grid;
       grid-template-columns: 1fr 1.45fr;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .contact-channel {
@@ -668,13 +670,14 @@
         display: none;
         position: absolute;
         top: 100%;
-        left: 1rem;
-        right: 1rem;
+        left: 0;
+        right: 0;
         flex-direction: column;
         background: var(--surface-solid);
-        padding: 0.75rem;
+        padding: 1rem 1.5rem;
         box-shadow: var(--shadow);
-        margin-top: 0.5rem;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
       }
 
       .nav-tabs.open {
@@ -690,13 +693,13 @@
 </head>
 <body>
 
-  <!-- Header & Page Navigation -->
+  <!-- Fixed Top Navigation Bar -->
   <header>
     <div class="nav-wrapper">
-      <div class="brand" data-target="general">
+      <a class="brand nav-jump" data-target="general">
         <div class="brand-avatar">CM</div>
         <span>Comfort Mabelane</span>
-      </div>
+      </a>
 
       <nav class="nav-tabs" id="nav-tabs">
         <button class="tab-btn active" data-target="general">General</button>
@@ -729,7 +732,7 @@
           </h1>
           <div class="hero-role">IT Technician &amp; Operations Team Leader</div>
           <p class="hero-bio">
-            Dedicated IT Technician holding a National Diploma in Information Technology with proven hands-on experience in ICT end-user support, desktop technical support, and team leadership. Specialized in hardware/software deployment, LAN configuration, and resolving technical faults strictly within SLA targets.
+            Dedicated IT Technician holding a National Diploma in Information Technology[span_0](start_span)[span_0](end_span) with proven hands-on experience in ICT end-user support, desktop technical support, and team leadership[span_1](start_span)[span_1](end_span). Specialized in hardware/software deployment, LAN configuration[span_2](start_span)[span_2](end_span), and resolving technical faults strictly within SLA targets[span_3](start_span)[span_3](end_span).
           </p>
           <div class="cta-group">
             <button class="btn-primary nav-jump" data-target="contact">Contact Me</button>
@@ -753,7 +756,7 @@
           </div>
           <div class="stat-box">
             <div class="stat-number">N.Dip</div>
-            <div class="stat-label">Information Technology (TUT)</div>
+            <div class="stat-label">Information Technology (TUT)[span_4](start_span)[span_4](end_span)</div>
           </div>
         </div>
       </div>
@@ -762,17 +765,17 @@
         <div class="glass-card">
           <span class="highlight-icon">🖥️</span>
           <h3 class="highlight-title">ICT End-User &amp; Desktop Support</h3>
-          <p class="highlight-desc">Experienced in configuring workstations, peripherals, and LAN infrastructure while maintaining accurate hardware inventories.</p>
+          <p class="highlight-desc">Experienced in configuring workstations, peripherals, and LAN infrastructure while maintaining accurate hardware inventories[span_5](start_span)[span_5](end_span).</p>
         </div>
         <div class="glass-card">
           <span class="highlight-icon">👥</span>
           <h3 class="highlight-title">Team Leadership &amp; Reporting</h3>
-          <p class="highlight-desc">Proven track record leading teams at the Department of Home Affairs, tracking KPIs, and reporting directly to upper management.</p>
+          <p class="highlight-desc">Proven track record leading teams at the Department of Home Affairs, tracking KPIs, and reporting directly to upper management[span_6](start_span)[span_6](end_span).</p>
         </div>
         <div class="glass-card">
           <span class="highlight-icon">☁️</span>
           <h3 class="highlight-title">Cloud &amp; Modern Tech Ready</h3>
-          <p class="highlight-desc">Certified in AWS Cloud Practitioner, Google AI Essentials, and ICDL alongside SQL database and Windows Server skills.</p>
+          <p class="highlight-desc">Certified in AWS Cloud Practitioner, Google AI Essentials, and ICDL[span_7](start_span)[span_7](end_span) alongside SQL database[span_8](start_span)[span_8](end_span) and Windows Server skills[span_9](start_span)[span_9](end_span).</p>
         </div>
       </div>
     </section>
@@ -791,27 +794,27 @@
           <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">Bio &amp; Contact Information</h3>
           <div class="info-row">
             <span class="info-label">Full Name</span>
-            <span class="info-value">Comfort Mabelane</span>
+            <span class="info-value">Comfort Mabelane[span_10](start_span)[span_10](end_span)</span>
           </div>
           <div class="info-row">
             <span class="info-label">Current Role</span>
-            <span class="info-value">Team Leader / IT Technician</span>
+            <span class="info-value">Team Leader / IT Technician[span_11](start_span)[span_11](end_span)</span>
           </div>
           <div class="info-row">
             <span class="info-label">Residential Address</span>
-            <span class="info-value">101 Francis Baard, Pretoria, 0001</span>
+            <span class="info-value">101 Francis Baard, Pretoria, 0001[span_12](start_span)[span_12](end_span)</span>
           </div>
           <div class="info-row">
             <span class="info-label">Mobile Number</span>
-            <span class="info-value">083 500 1655</span>
+            <span class="info-value">083 500 1655[span_13](start_span)[span_13](end_span)</span>
           </div>
           <div class="info-row">
             <span class="info-label">Email Address</span>
-            <span class="info-value">Kgwadusenny@gmail.com</span>
+            <span class="info-value">Kgwadusenny@gmail.com[span_14](start_span)[span_14](end_span)</span>
           </div>
           <div class="info-row">
             <span class="info-label">References</span>
-            <span class="info-value">Available Upon Request</span>
+            <span class="info-value">Available Upon Request[span_15](start_span)[span_15](end_span)</span>
           </div>
         </div>
 
@@ -819,11 +822,11 @@
           <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Core Professional Strengths</h3>
           <p style="color: var(--muted); font-size: 0.94rem;">Key interpersonal and operational attributes brought to every technical environment:</p>
           <ul class="competency-list">
-            <li><span>🎯</span> Strong Attention to Detail &amp; Accuracy</li>
-            <li><span>🗣️</span> Clear End-User &amp; Management Communication</li>
-            <li><span>📋</span> Structured Task Tracking &amp; Documentation</li>
-            <li><span>🤝</span> Collaborative Teamwork &amp; Staff Mentorship</li>
-            <li><span>⚡</span> Calm Under Pressure &amp; SLA-Driven Execution</li>
+            <li><span>🎯</span> Attention to Detail[span_16](start_span)[span_16](end_span)</li>
+            <li><span>🗣️</span> Communication Skills[span_17](start_span)[span_17](end_span)</li>
+            <li><span>📋</span> Task Tracking &amp; Documentation[span_18](start_span)[span_18](end_span)</li>
+            <li><span>🤝</span> Teamwork[span_19](start_span)[span_19](end_span)</li>
+            <li><span>⚡</span> SLA-Driven Execution[span_20](start_span)[span_20](end_span)</li>
           </ul>
         </div>
       </div>
@@ -842,34 +845,35 @@
         <div class="glass-card">
           <div class="role-top">
             <div>
-              <div class="role-title">Team Leader</div>
-              <div class="role-org">Department of Home Affairs</div>
+              <div class="role-title">Team Leader[span_21](start_span)[span_21](end_span)</div>
+              <div class="role-org">Department of Home Affairs[span_22](start_span)[span_22](end_span)</div>
             </div>
-            <span class="role-badge">Feb 2024 – Mar 2026</span>
+            <span class="role-badge">Feb 2024 - Mar 2026[span_23](start_span)[span_23](end_span)</span>
           </div>
           <ul class="role-list">
-            <li>Guiding the team towards achieving operational goals while fostering a positive, productive, and collaborative work environment.</li>
-            <li>Providing daily guidance and support while keeping team members informed about changes, updates, and critical information.</li>
-            <li>Tracking progress by regularly reviewing team performance and productivity metrics.</li>
-            <li>Maintaining accurate records, reports, and documentation related to team performance and activities.</li>
-            <li>Providing regular updates and performance reports to upper management highlighting challenges and achievements.</li>
+            <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment[span_24](start_span)[span_24](end_span).</li>
+            <li>Providing guidance and support, keeping the team informed about changes, updates, and important information[span_25](start_span)[span_25](end_span).</li>
+            <li>Tracking progress by regularly reviewing the team's performance and productivity[span_26](start_span)[span_26](end_span).</li>
+            <li>Maintaining necessary records, reports, and documentation related to team performance and activities[span_27](start_span)[span_27](end_span).</li>
+            <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements[span_28](start_span)[span_28](end_span).</li>
           </ul>
         </div>
 
         <div class="glass-card">
           <div class="role-top">
             <div>
-              <div class="role-title">IT Help Desk &amp; Support</div>
-              <div class="role-org">LEDET</div>
+              <div class="role-title">IT Help Desk &amp; Support[span_29](start_span)[span_29](end_span)</div>
+              <div class="role-org">LEDET[span_30](start_span)[span_30](end_span)</div>
             </div>
-            <span class="role-badge">Mar 2021 – Oct 2023</span>
+            <span class="role-badge">Mar 2021 - Oct 2023[span_31](start_span)[span_31](end_span)</span>
           </div>
           <ul class="role-list">
-            <li>Set up, configured, and installed new hardware equipment and peripherals onto the Local Area Network (LAN).</li>
-            <li>Performed routine software and hardware maintenance to ensure system reliability.</li>
-            <li>Provided efficient, responsive technical support to all end users across the organization.</li>
-            <li>Maintained a comprehensive and up-to-date inventory of all hardware devices.</li>
-            <li>Investigated, diagnosed, and resolved hardware and software faults while ensuring daily SLAs were met.</li>
+            <li>Set up, configure, and install new hardware equipment and peripherals to LAN[span_32](start_span)[span_32](end_span).</li>
+            <li>Perform software and hardware maintenance[span_33](start_span)[span_33](end_span).</li>
+            <li>Provide efficient technical support to all end users[span_34](start_span)[span_34](end_span).</li>
+            <li>Maintain inventory of hardware devices[span_35](start_span)[span_35](end_span).</li>
+            <li>Investigate and resolve hardware and software faults[span_36](start_span)[span_36](end_span).</li>
+            <li>Ensure daily service-level agreements are met[span_37](start_span)[span_37](end_span).</li>
           </ul>
         </div>
       </div>
@@ -878,32 +882,31 @@
         <div class="glass-card">
           <h3 style="font-size: 1.1rem;">Infrastructure &amp; Support</h3>
           <div class="skill-chips">
-            <span class="chip">Hardware &amp; Software Installation</span>
-            <span class="chip">Windows Server / Desktop</span>
-            <span class="chip">LAN Configuration</span>
-            <span class="chip">Printer &amp; Network Troubleshooting</span>
+            <span class="chip">Hardware &amp; Software Installation[span_38](start_span)[span_38](end_span)</span>
+            <span class="chip">Windows Server / Desktop[span_39](start_span)[span_39](end_span)</span>
+            <span class="chip">LAN[span_40](start_span)[span_40](end_span)</span>
+            <span class="chip">Printer / Network Troubleshooting[span_41](start_span)[span_41](end_span)</span>
           </div>
         </div>
 
         <div class="glass-card">
           <h3 style="font-size: 1.1rem;">Software &amp; Databases</h3>
           <div class="skill-chips">
-            <span class="chip">Microsoft 365</span>
-            <span class="chip">MS Office Suite</span>
-            <span class="chip">MySQL</span>
-            <span class="chip">PostgreSQL</span>
-            <span class="chip">VS Code</span>
+            <span class="chip">Microsoft 365[span_42](start_span)[span_42](end_span)</span>
+            <span class="chip">MS Office[span_43](start_span)[span_43](end_span)</span>
+            <span class="chip">MySQL[span_44](start_span)[span_44](end_span)</span>
+            <span class="chip">PostgreSQL[span_45](start_span)[span_45](end_span)</span>
+            <span class="chip">VS Code[span_46](start_span)[span_46](end_span)</span>
           </div>
         </div>
 
         <div class="glass-card">
           <h3 style="font-size: 1.1rem;">Operations &amp; Leadership</h3>
           <div class="skill-chips">
-            <span class="chip">Task Tracking</span>
-            <span class="chip">SLA Management</span>
-            <span class="chip">Communication Skills</span>
-            <span class="chip">Teamwork</span>
-            <span class="chip">Attention to Detail</span>
+            <span class="chip">Task Tracking[span_47](start_span)[span_47](end_span)</span>
+            <span class="chip">Communication Skills[span_48](start_span)[span_48](end_span)</span>
+            <span class="chip">Teamwork[span_49](start_span)[span_49](end_span)</span>
+            <span class="chip">Attention to Detail[span_50](start_span)[span_50](end_span)</span>
           </div>
         </div>
       </div>
@@ -924,15 +927,15 @@
           <p style="color: var(--muted); font-size: 0.92rem;">Formal tertiary and secondary qualifications.</p>
 
           <div class="edu-block">
-            <span class="role-badge" style="display: inline-block; margin-bottom: 0.6rem;">2017 – 2022</span>
-            <div style="font-size: 1.15rem; font-weight: 800;">National Diploma in Information Technology</div>
-            <div style="color: var(--primary); font-weight: 700; margin-top: 0.2rem;">Tshwane University of Technology</div>
+            <span class="role-badge" style="display: inline-block; margin-bottom: 0.6rem;">2017 - 2022[span_51](start_span)[span_51](end_span)</span>
+            <div style="font-size: 1.15rem; font-weight: 800;">National Diploma in Information Technology[span_52](start_span)[span_52](end_span)</div>
+            <div style="color: var(--primary); font-weight: 700; margin-top: 0.2rem;">Tshwane University of Technology[span_53](start_span)[span_53](end_span)</div>
           </div>
 
           <div class="edu-block">
-            <span class="role-badge" style="display: inline-block; margin-bottom: 0.6rem;">2012 – 2016</span>
-            <div style="font-size: 1.15rem; font-weight: 800;">National Senior Certificate (NSC)</div>
-            <div style="color: var(--primary); font-weight: 700; margin-top: 0.2rem;">Makgoka High School</div>
+            <span class="role-badge" style="display: inline-block; margin-bottom: 0.6rem;">2012 - 2016[span_54](start_span)[span_54](end_span)</span>
+            <div style="font-size: 1.15rem; font-weight: 800;">NSC[span_55](start_span)[span_55](end_span)</div>
+            <div style="color: var(--primary); font-weight: 700; margin-top: 0.2rem;">Makgoka High School[span_56](start_span)[span_56](end_span)</div>
           </div>
         </div>
 
@@ -943,7 +946,7 @@
           <div class="cert-card">
             <div class="cert-badge">☁️</div>
             <div>
-              <div style="font-weight: 800; font-size: 1.05rem;">AWS Cloud Practitioner</div>
+              <div style="font-weight: 800; font-size: 1.05rem;">AWS Cloud Practitioner[span_57](start_span)[span_57](end_span)</div>
               <div style="color: var(--muted); font-size: 0.88rem;">Amazon Web Services</div>
             </div>
           </div>
@@ -951,7 +954,7 @@
           <div class="cert-card">
             <div class="cert-badge">🤖</div>
             <div>
-              <div style="font-weight: 800; font-size: 1.05rem;">Google AI Essentials</div>
+              <div style="font-weight: 800; font-size: 1.05rem;">Google AI Essentials[span_58](start_span)[span_58](end_span)</div>
               <div style="color: var(--muted); font-size: 0.88rem;">Google Career Certificates</div>
             </div>
           </div>
@@ -959,7 +962,7 @@
           <div class="cert-card">
             <div class="cert-badge">💻</div>
             <div>
-              <div style="font-weight: 800; font-size: 1.05rem;">ICDL Profile Certificate</div>
+              <div style="font-weight: 800; font-size: 1.05rem;">ICDL Profile Certificate[span_59](start_span)[span_59](end_span)</div>
               <div style="color: var(--muted); font-size: 0.88rem;">International Computer Driving Licence</div>
             </div>
           </div>
@@ -988,7 +991,7 @@
               <div class="channel-icon">✉️</div>
               <div>
                 <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">EMAIL</div>
-                <div style="font-weight: 700;">Kgwadusenny@gmail.com</div>
+                <div style="font-weight: 700;">Kgwadusenny@gmail.com[span_60](start_span)[span_60](end_span)</div>
               </div>
             </div>
 
@@ -996,7 +999,7 @@
               <div class="channel-icon">📞</div>
               <div>
                 <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">PHONE</div>
-                <div style="font-weight: 700;">083 500 1655</div>
+                <div style="font-weight: 700;">083 500 1655[span_61](start_span)[span_61](end_span)</div>
               </div>
             </div>
 
@@ -1004,7 +1007,7 @@
               <div class="channel-icon">📍</div>
               <div>
                 <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">LOCATION</div>
-                <div style="font-weight: 700;">101 Francis Baard, Pretoria, 0001</div>
+                <div style="font-weight: 700;">101 Francis Baard, Pretoria, 0001[span_62](start_span)[span_62](end_span)</div>
               </div>
             </div>
           </div>
@@ -1100,15 +1103,17 @@
 
       // 4. Quick Copy Email Button
       const copyBtn = document.getElementById('quick-copy-email');
-      copyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText('Kgwadusenny@gmail.com').then(() => {
-          const prev = copyBtn.textContent;
-          copyBtn.textContent = '✓ Email Copied';
-          setTimeout(() => {
-            copyBtn.textContent = prev;
-          }, 2500);
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText('Kgwadusenny@gmail.com').then(() => {
+            const prev = copyBtn.textContent;
+            copyBtn.textContent = '✓ Email Copied';
+            setTimeout(() => {
+              copyBtn.textContent = prev;
+            }, 2500);
+          });
         });
-      });
+      }
 
       // 5. Formspree Asynchronous Submission
       const contactForm = document.getElementById('contact-form');
