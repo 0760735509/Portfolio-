@@ -184,18 +184,19 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Glass & Glow Cards */
+    /* Glass Cards */
     .glass-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 2.5rem;
+      padding: 2rem;
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
+      word-break: break-word;
     }
 
-    /* Slick Hero Section (Matching Reference Style) */
+    /* Hero Section */
     .hero-split {
       display: grid;
       grid-template-columns: 1.3fr 1fr;
@@ -204,28 +205,23 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 24px;
-      padding: 3.5rem;
+      padding: 3rem;
       box-shadow: var(--shadow);
       position: relative;
     }
 
-    .hero-split::before {
-      content: '';
-      position: absolute;
-      top: -50px; right: -50px;
-      width: 250px; height: 250px;
-      background: var(--primary);
-      filter: blur(100px);
-      opacity: 0.15;
-      pointer-events: none;
-    }
-
     .hero-greeting {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 0.5rem;
       letter-spacing: -1px;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero-role {
@@ -290,12 +286,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
     }
 
     .photo-frame {
-      width: 280px;
-      height: 280px;
+      width: 260px;
+      height: 260px;
       border-radius: 50%;
       background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(29, 78, 216, 0.4));
       border: 2px solid var(--primary);
@@ -304,7 +299,6 @@
       justify-content: center;
       box-shadow: 0 0 40px var(--primary-glow);
       overflow: hidden;
-      position: relative;
     }
 
     .photo-placeholder-text {
@@ -315,7 +309,6 @@
       padding: 1rem;
     }
 
-    /* Highlights & Grid Layouts */
     .highlights-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -342,15 +335,15 @@
     .info-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       padding: 1.1rem 0;
       border-bottom: 1px solid var(--border);
       gap: 1rem;
     }
 
     .info-row:last-child { border-bottom: none; }
-    .info-label { color: var(--muted); font-weight: 600; font-size: 0.92rem; }
-    .info-value { font-weight: 700; font-size: 0.98rem; text-align: right; }
+    .info-label { color: var(--muted); font-weight: 600; font-size: 0.92rem; flex-shrink: 0; }
+    .info-value { font-weight: 700; font-size: 0.98rem; text-align: right; word-break: break-word; }
 
     /* Timeline & Cards */
     .timeline { display: grid; gap: 1.5rem; margin-bottom: 2.5rem; }
@@ -449,7 +442,7 @@
           </h1>
           <div class="hero-role">IT Technician &amp; Team Leader</div>
           <p class="hero-desc">
-            Dedicated IT Technician holding a National Diploma in Information Technology[span_0](start_span)[span_0](end_span) with proven hands-on experience in ICT end-user support, desktop technical support, and team leadership[span_1](start_span)[span_1](end_span). Specialized in hardware/software deployment, LAN configuration[span_2](start_span)[span_2](end_span), and resolving faults within SLA targets[span_3](start_span)[span_3](end_span).
+            Dedicated IT Technician holding a National Diploma in Information Technology with proven hands-on experience in ICT end-user support, desktop technical support, and team leadership. Specialized in hardware/software deployment, LAN configuration, and resolving faults within SLA targets.
           </p>
           <div class="btn-group">
             <button class="btn-main nav-jump" data-target="contact">Let's Talk</button>
@@ -475,17 +468,17 @@
         <div class="glass-card">
           <span class="highlight-icon">🖥️</span>
           <h3 class="highlight-title">End-User Support</h3>
-          <p class="highlight-desc">Experienced in configuring workstations, peripherals, and LAN infrastructure while maintaining accurate hardware inventories[span_4](start_span)[span_4](end_span).</p>
+          <p class="highlight-desc">Experienced in configuring workstations, peripherals, and LAN infrastructure while maintaining accurate hardware inventories.</p>
         </div>
         <div class="glass-card">
           <span class="highlight-icon">👥</span>
           <h3 class="highlight-title">Team Leadership</h3>
-          <p class="highlight-desc">Proven track record leading teams at the Department of Home Affairs, tracking KPIs, and reporting to upper management[span_5](start_span)[span_5](end_span).</p>
+          <p class="highlight-desc">Proven track record leading teams at the Department of Home Affairs, tracking KPIs, and reporting to upper management.</p>
         </div>
         <div class="glass-card">
           <span class="highlight-icon">☁️</span>
           <h3 class="highlight-title">Cloud &amp; Certifications</h3>
-          <p class="highlight-desc">Certified in AWS Cloud Practitioner, Google AI Essentials, and ICDL[span_6](start_span)[span_6](end_span) alongside database[span_7](start_span)[span_7](end_span) and Windows Server skills[span_8](start_span)[span_8](end_span).</p>
+          <p class="highlight-desc">Certified in AWS Cloud Practitioner, Google AI Essentials, and ICDL alongside database and Windows Server skills.</p>
         </div>
       </div>
     </section>
@@ -503,27 +496,27 @@
           <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">Contact Information</h3>
           <div class="info-row">
             <span class="info-label">Full Name</span>
-            <span class="info-value">Comfort Mabelane[span_9](start_span)[span_9](end_span)</span>
+            <span class="info-value">Comfort Mabelane</span>
           </div>
           <div class="info-row">
             <span class="info-label">Current Role</span>
-            <span class="info-value">Team Leader / IT Technician[span_10](start_span)[span_10](end_span)</span>
+            <span class="info-value">Team Leader / IT Technician</span>
           </div>
           <div class="info-row">
             <span class="info-label">Address</span>
-            <span class="info-value">101 Francis Baard, Pretoria, 0001[span_11](start_span)[span_11](end_span)</span>
+            <span class="info-value">101 Francis Baard, Pretoria, 0001</span>
           </div>
           <div class="info-row">
             <span class="info-label">Phone</span>
-            <span class="info-value">083 500 1655[span_12](start_span)[span_12](end_span)</span>
+            <span class="info-value">083 500 1655</span>
           </div>
           <div class="info-row">
             <span class="info-label">Email</span>
-            <span class="info-value">Kgwadusenny@gmail.com[span_13](start_span)[span_13](end_span)</span>
+            <span class="info-value">Kgwadusenny@gmail.com</span>
           </div>
           <div class="info-row">
             <span class="info-label">References</span>
-            <span class="info-value">Available Upon Request[span_14](start_span)[span_14](end_span)</span>
+            <span class="info-value">Available Upon Request</span>
           </div>
         </div>
 
@@ -531,10 +524,10 @@
           <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Core Strengths</h3>
           <p style="color: var(--muted); font-size: 0.94rem; margin-bottom: 1rem;">Key professional attributes brought to every technical setting:</p>
           <ul style="list-style: none; display: grid; gap: 0.9rem;">
-            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>🎯</span> Attention to Detail[span_15](start_span)[span_15](end_span)</li>
-            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>🗣️</span> Communication Skills[span_16](start_span)[span_16](end_span)</li>
-            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>📋</span> Task Tracking &amp; Documentation[span_17](start_span)[span_17](end_span)</li>
-            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>🤝</span> Teamwork[span_18](start_span)[span_18](end_span)</li>
+            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>🎯</span> Attention to Detail</li>
+            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>🗣️</span> Communication Skills</li>
+            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>📋</span> Task Tracking &amp; Documentation</li>
+            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>🤝</span> Teamwork</li>
           </ul>
         </div>
       </div>
@@ -552,35 +545,35 @@
         <div class="glass-card">
           <div class="role-top">
             <div>
-              <div class="role-title">Team Leader[span_19](start_span)[span_19](end_span)</div>
-              <div class="role-org">Department of Home Affairs[span_20](start_span)[span_20](end_span)</div>
+              <div class="role-title">Team Leader</div>
+              <div class="role-org">Department of Home Affairs</div>
             </div>
-            <span class="role-badge">Feb 2024 - Mar 2026[span_21](start_span)[span_21](end_span)</span>
+            <span class="role-badge">Feb 2024 - Mar 2026</span>
           </div>
           <ul class="role-list">
-            <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment[span_22](start_span)[span_22](end_span).</li>
-            <li>Providing guidance and support, keeping the team informed about changes, updates, and important information[span_23](start_span)[span_23](end_span).</li>
-            <li>Tracking progress by regularly reviewing the team's performance and productivity[span_24](start_span)[span_24](end_span).</li>
-            <li>Maintaining necessary records, reports, and documentation related to team performance and activities[span_25](start_span)[span_25](end_span).</li>
-            <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements[span_26](start_span)[span_26](end_span).</li>
+            <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment.</li>
+            <li>Providing guidance and support, keeping the team informed about changes, updates, and important information.</li>
+            <li>Tracking progress by regularly reviewing the team's performance and productivity.</li>
+            <li>Maintaining necessary records, reports, and documentation related to team performance and activities.</li>
+            <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements.</li>
           </ul>
         </div>
 
         <div class="glass-card">
           <div class="role-top">
             <div>
-              <div class="role-title">IT Help Desk &amp; Support[span_27](start_span)[span_27](end_span)</div>
-              <div class="role-org">LEDET[span_28](start_span)[span_28](end_span)</div>
+              <div class="role-title">IT Help Desk &amp; Support</div>
+              <div class="role-org">LEDET</div>
             </div>
-            <span class="role-badge">Mar 2021 - Oct 2023[span_29](start_span)[span_29](end_span)</span>
+            <span class="role-badge">Mar 2021 - Oct 2023</span>
           </div>
           <ul class="role-list">
-            <li>Set up, configure, and install new hardware equipment and peripherals to LAN[span_30](start_span)[span_30](end_span).</li>
-            <li>Perform software and hardware maintenance[span_31](start_span)[span_31](end_span).</li>
-            <li>Provide efficient technical support to all end users[span_32](start_span)[span_32](end_span).</li>
-            <li>Maintain inventory of hardware devices[span_33](start_span)[span_33](end_span).</li>
-            <li>Investigate and resolve hardware and software faults[span_34](start_span)[span_34](end_span).</li>
-            <li>Ensure daily service-level agreements are met[span_35](start_span)[span_35](end_span).</li>
+            <li>Set up, configure, and install new hardware equipment and peripherals to LAN.</li>
+            <li>Perform software and hardware maintenance.</li>
+            <li>Provide efficient technical support to all end users.</li>
+            <li>Maintain inventory of hardware devices.</li>
+            <li>Investigate and resolve hardware and software faults.</li>
+            <li>Ensure daily service-level agreements are met.</li>
           </ul>
         </div>
       </div>
@@ -589,21 +582,21 @@
         <div class="glass-card">
           <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Infrastructure &amp; Support</h3>
           <div class="skill-chips">
-            <span class="chip">Hardware &amp; Software Installation[span_36](start_span)[span_36](end_span)</span>
-            <span class="chip">Windows Server / Desktop[span_37](start_span)[span_37](end_span)</span>
-            <span class="chip">LAN[span_38](start_span)[span_38](end_span)</span>
-            <span class="chip">Printer / Network Troubleshooting[span_39](start_span)[span_39](end_span)</span>
+            <span class="chip">Hardware &amp; Software Installation</span>
+            <span class="chip">Windows Server / Desktop</span>
+            <span class="chip">LAN</span>
+            <span class="chip">Printer / Network Troubleshooting</span>
           </div>
         </div>
 
         <div class="glass-card">
           <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Software &amp; Databases</h3>
           <div class="skill-chips">
-            <span class="chip">Microsoft 365[span_40](start_span)[span_40](end_span)</span>
-            <span class="chip">MS Office[span_41](start_span)[span_41](end_span)</span>
-            <span class="chip">MySQL[span_42](start_span)[span_42](end_span)</span>
-            <span class="chip">PostgreSQL[span_43](start_span)[span_43](end_span)</span>
-            <span class="chip">VS Code[span_44](start_span)[span_44](end_span)</span>
+            <span class="chip">Microsoft 365</span>
+            <span class="chip">MS Office</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">VS Code</span>
           </div>
         </div>
       </div>
@@ -621,14 +614,14 @@
         <div class="glass-card">
           <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Academic Education</h3>
           <div class="edu-block">
-            <span class="role-badge" style="display:inline-block; margin-bottom:0.5rem;">2017 - 2022[span_45](start_span)[span_45](end_span)</span>
-            <div style="font-size: 1.1rem; font-weight: 800;">National Diploma in Information Technology[span_46](start_span)[span_46](end_span)</div>
-            <div style="color: var(--primary); font-weight: 700; font-size: 0.95rem; margin-top: 0.2rem;">Tshwane University of Technology[span_47](start_span)[span_47](end_span)</div>
+            <span class="role-badge" style="display:inline-block; margin-bottom:0.5rem;">2017 - 2022</span>
+            <div style="font-size: 1.1rem; font-weight: 800;">National Diploma in Information Technology</div>
+            <div style="color: var(--primary); font-weight: 700; font-size: 0.95rem; margin-top: 0.2rem;">Tshwane University of Technology</div>
           </div>
           <div class="edu-block">
-            <span class="role-badge" style="display:inline-block; margin-bottom:0.5rem;">2012 - 2016[span_48](start_span)[span_48](end_span)</span>
-            <div style="font-size: 1.1rem; font-weight: 800;">NSC[span_49](start_span)[span_49](end_span)</div>
-            <div style="color: var(--primary); font-weight: 700; font-size: 0.95rem; margin-top: 0.2rem;">Makgoka High School[span_50](start_span)[span_50](end_span)</div>
+            <span class="role-badge" style="display:inline-block; margin-bottom:0.5rem;">2012 - 2016</span>
+            <div style="font-size: 1.1rem; font-weight: 800;">NSC</div>
+            <div style="color: var(--primary); font-weight: 700; font-size: 0.95rem; margin-top: 0.2rem;">Makgoka High School</div>
           </div>
         </div>
 
@@ -637,21 +630,21 @@
           <div class="cert-card">
             <div class="cert-badge">☁️</div>
             <div>
-              <div style="font-weight: 800; font-size: 1.05rem;">AWS Cloud Practitioner[span_51](start_span)[span_51](end_span)</div>
+              <div style="font-weight: 800; font-size: 1.05rem;">AWS Cloud Practitioner</div>
               <div style="color: var(--muted); font-size: 0.88rem;">Amazon Web Services</div>
             </div>
           </div>
           <div class="cert-card">
             <div class="cert-badge">🤖</div>
             <div>
-              <div style="font-weight: 800; font-size: 1.05rem;">Google AI Essentials[span_52](start_span)[span_52](end_span)</div>
+              <div style="font-weight: 800; font-size: 1.05rem;">Google AI Essentials</div>
               <div style="color: var(--muted); font-size: 0.88rem;">Google Career Certificates</div>
             </div>
           </div>
           <div class="cert-card">
             <div class="cert-badge">💻</div>
             <div>
-              <div style="font-weight: 800; font-size: 1.05rem;">ICDL Profile Certificate[span_53](start_span)[span_53](end_span)</div>
+              <div style="font-weight: 800; font-size: 1.05rem;">ICDL Profile Certificate</div>
               <div style="color: var(--muted); font-size: 0.88rem;">International Computer Driving Licence</div>
             </div>
           </div>
@@ -679,7 +672,7 @@
               <div class="channel-icon">✉️</div>
               <div>
                 <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">EMAIL</div>
-                <div style="font-weight: 700;">Kgwadusenny@gmail.com[span_54](start_span)[span_54](end_span)</div>
+                <div style="font-weight: 700;">Kgwadusenny@gmail.com</div>
               </div>
             </div>
 
@@ -687,7 +680,7 @@
               <div class="channel-icon">📞</div>
               <div>
                 <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">PHONE</div>
-                <div style="font-weight: 700;">083 500 1655[span_55](start_span)[span_55](end_span)</div>
+                <div style="font-weight: 700;">083 500 1655</div>
               </div>
             </div>
 
@@ -695,7 +688,7 @@
               <div class="channel-icon">📍</div>
               <div>
                 <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">LOCATION</div>
-                <div style="font-weight: 700;">101 Francis Baard, Pretoria, 0001[span_56](start_span)[span_56](end_span)</div>
+                <div style="font-weight: 700;">101 Francis Baard, Pretoria, 0001</div>
               </div>
             </div>
           </div>
