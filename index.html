@@ -6,42 +6,40 @@
   <title>Comfort Mabelane | IT Technician & Team Leader</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --accent-gradient: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
-      --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      --hero-text: #ffffff;
-      --hero-muted: #94a3b8;
-      --border: #e2e8f0;
-      --card-bg: #ffffff;
-      --badge-bg: rgba(37, 99, 235, 0.1);
-      --badge-text: #2563eb;
-      --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.05);
+      --bg: #070b14;
+      --bg-mesh: radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12), transparent 40%),
+                 radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.14), transparent 45%);
+      --surface: rgba(15, 23, 42, 0.72);
+      --surface-solid: #0f172a;
+      --surface-hover: rgba(30, 41, 59, 0.85);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #38bdf8;
+      --secondary: #818cf8;
+      --gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+      --border: rgba(148, 163, 184, 0.14);
+      --border-glow: rgba(56, 189, 248, 0.4);
+      --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
     }
 
-    body.dark-mode {
-      --bg: #030712;
-      --surface: #111827;
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --primary: #3b82f6;
-      --primary-dark: #2563eb;
-      --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
-      --hero-bg: linear-gradient(135deg, #111827 0%, #1f2937 100%);
-      --hero-text: #f9fafb;
-      --hero-muted: #9ca3af;
-      --border: #1f2937;
-      --card-bg: #111827;
-      --badge-bg: rgba(59, 130, 246, 0.15);
-      --badge-text: #93c5fd;
-      --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+    body.light-mode {
+      --bg: #f1f5f9;
+      --bg-mesh: radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.08), transparent 45%),
+                 radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.08), transparent 45%);
+      --surface: rgba(255, 255, 255, 0.85);
+      --surface-solid: #ffffff;
+      --surface-hover: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb;
+      --secondary: #4f46e5;
+      --gradient: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+      --border: rgba(15, 23, 42, 0.1);
+      --border-glow: rgba(37, 99, 235, 0.35);
+      --shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -50,84 +48,113 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg);
+      background-image: var(--bg-mesh);
+      background-attachment: fixed;
       color: var(--text);
-      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Navigation */
+    /* Top Navigation Bar */
     header {
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
       background: var(--surface);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      transition: background-color 0.3s ease;
     }
 
-    .nav-container {
-      max-width: 1100px;
+    .nav-wrapper {
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 1.2rem 2rem;
+      padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
     }
 
-    .logo {
-      font-weight: 800;
-      font-size: 1.3rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-
-    .logo span {
-      color: var(--primary);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: var(--primary);
-    }
-
-    .nav-actions {
+    .brand {
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+      cursor: pointer;
+    }
+
+    .brand-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--gradient);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0.4rem;
+      background: rgba(148, 163, 184, 0.08);
+      padding: 0.35rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.55rem 1rem;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      background: var(--gradient);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .icon-btn {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
       width: 40px;
       height: 40px;
       border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1.05rem;
       cursor: pointer;
-      font-size: 1.1rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -136,193 +163,295 @@
 
     .icon-btn:hover {
       border-color: var(--primary);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
     }
 
-    .mobile-only {
+    .mobile-menu-btn {
       display: none;
     }
 
-    /* Main Container */
+    /* Main Page Container */
     main {
-      max-width: 1100px;
+      flex: 1;
+      max-width: 1120px;
+      width: 100%;
       margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
+      padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* Hero Section */
-    .hero {
-      background: var(--hero-bg);
-      color: var(--hero-text);
-      border-radius: 24px;
-      padding: 3.5rem;
-      margin-bottom: 3rem;
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2);
+    .page-view {
+      display: none;
+      animation: pageFadeIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .page-view.active {
+      display: block;
+    }
+
+    @keyframes pageFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Glass Cards */
+    .glass-card {
+      background: var(--surface);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-glow);
+    }
+
+    /* GENERAL PAGE (HERO & OVERVIEW) */
+    .hero-panel {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
       position: relative;
       overflow: hidden;
     }
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.2), transparent 50%);
-      pointer-events: none;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      background: rgba(59, 130, 246, 0.2);
-      color: #93c5fd;
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 0.4rem 1rem;
-      border-radius: 999px;
-      margin-bottom: 1.25rem;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      letter-spacing: -1px;
-    }
-
-    .hero-subtitle {
-      font-size: 1.15rem;
-      color: var(--hero-muted);
-      max-width: 750px;
-      margin-bottom: 2rem;
-      line-height: 1.7;
-    }
-
-    .hero-contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.95rem;
-      color: var(--hero-muted);
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-contact span {
-      display: flex;
+    .status-pill {
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
     }
 
-    .hero-buttons {
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-role {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-bio {
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .cta-group {
       display: flex;
       flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #ffffff;
+      border: none;
+      padding: 0.85rem 1.65rem;
+      border-radius: 12px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px -4px rgba(56, 189, 248, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px -4px rgba(56, 189, 248, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    /* Quick Stats Side Panel */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent-gradient);
-      color: #ffffff;
-      padding: 0.85rem 1.8rem;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-      transition: all 0.2s ease;
+    .stat-box {
+      background: rgba(148, 163, 184, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.35rem;
+      text-align: left;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--hero-text);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: none;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: var(--hero-text);
-    }
-
-    /* Sections */
-    section {
-      margin-bottom: 3.5rem;
-      scroll-margin-top: 100px;
-    }
-
-    .section-title {
-      font-size: 1.75rem;
+    .stat-number {
+      font-size: 1.85rem;
       font-weight: 800;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .highlight-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .highlight-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    .highlight-desc {
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    /* PAGE HEADERS */
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .page-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .page-heading {
+      font-size: 2.1rem;
+      font-weight: 800;
       letter-spacing: -0.5px;
     }
 
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 2px;
-      background: var(--border);
-      margin-left: 1rem;
-      border-radius: 2px;
+    /* PERSONAL DETAILS PAGE */
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1.5rem;
     }
 
-    /* Cards */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease, border-color 0.2s ease;
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.05rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
     }
 
-    .card:hover {
-      border-color: var(--primary);
-      transform: translateY(-3px);
+    .info-row:last-child {
+      border-bottom: none;
     }
 
-    .card-subtitle {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-    }
-
-    .edu-item {
-      margin-bottom: 1.5rem;
-    }
-
-    .edu-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .muted-date {
-      font-size: 0.85rem;
+    .info-label {
+      color: var(--muted);
+      font-size: 0.92rem;
       font-weight: 600;
-      color: var(--muted);
-      margin-top: 0.2rem;
     }
 
-    .reference-note {
-      margin-top: 1.5rem;
-      font-size: 0.95rem;
-      color: var(--muted);
-      font-style: italic;
+    .info-value {
+      font-weight: 700;
+      font-size: 0.98rem;
+      text-align: right;
     }
 
-    .job-header {
+    .competency-list {
+      list-style: none;
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .competency-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(148, 163, 184, 0.06);
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    /* EXPERIENCE & SKILLS PAGE */
+    .timeline {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .role-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -331,384 +460,578 @@
       margin-bottom: 1rem;
     }
 
-    .job-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text);
+    .role-title {
+      font-size: 1.3rem;
+      font-weight: 800;
     }
 
-    .job-company {
+    .role-org {
       color: var(--primary);
       font-weight: 700;
       font-size: 1rem;
-      margin-top: 0.1rem;
     }
 
-    .job-date {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--primary);
-      background: var(--badge-bg);
+    .role-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 600;
       padding: 0.35rem 0.85rem;
       border-radius: 8px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--primary);
+      border: 1px solid rgba(56, 189, 248, 0.25);
     }
 
-    .card ul {
+    .role-list {
       padding-left: 1.25rem;
       color: var(--muted);
     }
 
-    .card li {
-      margin-bottom: 0.6rem;
-      font-size: 0.98rem;
+    .role-list li {
+      margin-bottom: 0.55rem;
+      font-size: 0.97rem;
     }
 
-    /* Grid */
-    .grid-2 {
+    .skills-categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.25rem;
     }
 
-    /* Skills Badges */
-    .skills-wrap {
+    .skill-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.6rem;
+      margin-top: 1rem;
     }
 
-    .skill-badge {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.6rem 1.1rem;
-      border-radius: 10px;
-      font-size: 0.92rem;
+    .chip {
+      font-size: 0.88rem;
       font-weight: 600;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-      transition: all 0.2s ease;
+      padding: 0.5rem 0.9rem;
+      border-radius: 10px;
+      background: rgba(148, 163, 184, 0.08);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
     }
 
-    .skill-badge:hover {
-      background: var(--badge-bg);
-      color: var(--primary);
+    .chip:hover {
       border-color: var(--primary);
+      color: var(--primary);
       transform: translateY(-2px);
     }
 
-    /* Contact Form */
-    .contact-grid {
+    /* QUALIFICATIONS PAGE */
+    .qual-grid {
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 2.5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
     }
 
-    .contact-info p {
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      font-size: 1.05rem;
+    .edu-block {
+      padding: 1.25rem;
+      border-radius: 14px;
+      background: rgba(148, 163, 184, 0.05);
+      border: 1px solid var(--border);
+      margin-top: 1rem;
     }
 
-    .contact-detail {
+    .cert-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      border-radius: 14px;
+      background: rgba(148, 163, 184, 0.05);
+      border: 1px solid var(--border);
+      margin-top: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .cert-card:hover {
+      border-color: var(--primary);
+    }
+
+    .cert-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--gradient);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    /* CONTACT PAGE */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.45fr;
+      gap: 2rem;
+    }
+
+    .contact-channel {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 14px;
+      background: rgba(148, 163, 184, 0.06);
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+
+    .channel-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.14);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .field-group {
       margin-bottom: 1.2rem;
-      font-size: 1rem;
     }
 
-    .contact-detail strong {
+    .field-group label {
       display: block;
-      color: var(--text);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.2rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
       color: var(--muted);
     }
 
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
+    .field-group input,
+    .field-group textarea {
       width: 100%;
       padding: 0.85rem 1rem;
+      border-radius: 12px;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 0.98rem;
+      background: rgba(148, 163, 184, 0.06);
       color: var(--text);
-      background: var(--bg);
-      transition: all 0.2s ease;
+      font-family: inherit;
+      font-size: 0.96rem;
+      transition: all 0.2s;
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus {
+    .field-group input:focus,
+    .field-group textarea:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-      background: var(--surface);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+      background: var(--surface-solid);
     }
 
-    .form-status {
+    .status-msg {
       margin-top: 1rem;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       font-weight: 600;
     }
 
-    .form-status.success {
-      color: #16a34a;
-    }
-
-    .form-status.error {
-      color: #dc2626;
-    }
-
-    /* Scroll Reveal Animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .status-msg.ok { color: #10b981; }
+    .status-msg.err { color: #ef4444; }
 
     footer {
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 2rem 1rem;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       border-top: 1px solid var(--border);
       background: var(--surface);
     }
 
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .contact-grid {
+    /* Responsive Breakpoints */
+    @media (max-width: 860px) {
+      .hero-panel,
+      .details-grid,
+      .qual-grid,
+      .contact-layout {
         grid-template-columns: 1fr;
       }
 
-      .mobile-only {
+      .hero-title {
+        font-size: 2.3rem;
+      }
+
+      .mobile-menu-btn {
         display: flex;
       }
 
-      nav {
+      .nav-tabs {
         display: none;
         position: absolute;
         top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--surface);
-        border-bottom: 1px solid var(--border);
-        padding: 1.5rem;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-      }
-
-      nav.open {
-        display: block;
-      }
-
-      nav ul {
+        left: 1rem;
+        right: 1rem;
         flex-direction: column;
-        gap: 1rem;
+        background: var(--surface-solid);
+        padding: 0.75rem;
+        box-shadow: var(--shadow);
+        margin-top: 0.5rem;
       }
 
-      .hero {
-        padding: 2rem 1.5rem;
+      .nav-tabs.open {
+        display: flex;
       }
 
-      .hero h1 {
-        font-size: 2.2rem;
+      .tab-btn {
+        text-align: left;
+        padding: 0.75rem 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Header & Page Navigation -->
   <header>
-    <div class="nav-container">
-      <a href="#" class="logo">Comfort<span>.</span></a>
+    <div class="nav-wrapper">
+      <div class="brand" data-target="general">
+        <div class="brand-avatar">CM</div>
+        <span>Comfort Mabelane</span>
+      </div>
 
-      <nav id="nav-menu">
-        <ul>
-          <li><a href="#about" class="nav-link active">About</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
-          <li><a href="#education" class="nav-link">Education</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#contact" class="nav-link">Contact Me</a></li>
-        </ul>
+      <nav class="nav-tabs" id="nav-tabs">
+        <button class="tab-btn active" data-target="general">General</button>
+        <button class="tab-btn" data-target="personal">Personal Details</button>
+        <button class="tab-btn" data-target="experience">Experience &amp; Skills</button>
+        <button class="tab-btn" data-target="qualifications">Qualifications</button>
+        <button class="tab-btn" data-target="contact">Contact Me</button>
       </nav>
 
-      <div class="nav-actions">
-        <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">🌙</button>
-        <button id="menu-toggle" class="icon-btn mobile-only" aria-label="Open Menu">☰</button>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="icon-btn" title="Switch Light/Dark Theme" aria-label="Switch Theme">☀️</button>
+        <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Menu">☰</button>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero / Profile -->
-    <section class="hero reveal" id="about">
-      <span class="hero-tag">IT Technician &amp; Team Leader</span>
-      <h1>Comfort Mabelane</h1>
-      <p class="hero-subtitle">
-        Dedicated IT Technician with a National Diploma in Information Technology and 2 years of experience in ICT end-user support and desktop technical support. Proven expertise in setup, configuration, hardware/software installation, maintenance, and resolving faults within SLA.
-      </p>
-      <div class="hero-contact">
-        <span>📍 101 Francis Baard, Pretoria, 0001</span>
-        <span>📞 083 500 1655</span>
-        <span>✉️ Kgwadusenny@gmail.com</span>
-      </div>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn" style="color: #ffffff;">Get in Touch</a>
-        <button id="copy-email-btn" class="btn btn-outline" style="color: #ffffff;">Copy Email</button>
-      </div>
-    </section>
-
-    <!-- Employment History -->
-    <section id="experience" class="reveal">
-      <h2 class="section-title">Employment History</h2>
-
-      <div class="card">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Team Leader</div>
-            <div class="job-company">Department of Home Affairs</div>
+    <!-- ==========================================
+         PAGE 1: GENERAL (OVERVIEW)
+    =========================================== -->
+    <section id="page-general" class="page-view active">
+      <div class="glass-card hero-panel">
+        <div>
+          <div class="status-pill">
+            <span class="pulse-dot"></span>
+            AVAILABLE FOR IT &amp; LEADERSHIP ROLES
           </div>
-          <span class="job-date">Feb 2024 - Mar 2026</span>
-        </div>
-        <ul>
-          <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment.</li>
-          <li>Providing guidance and support, keeping the team informed about changes, updates, and important operational information.</li>
-          <li>Tracking progress by regularly reviewing team performance and productivity.</li>
-          <li>Maintaining necessary records, reports, and documentation related to team performance and activities.</li>
-          <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="job-header">
-          <div>
-            <div class="job-title">IT Help Desk &amp; Support</div>
-            <div class="job-company">LEDET</div>
-          </div>
-          <span class="job-date">Mar 2021 - Oct 2023</span>
-        </div>
-        <ul>
-          <li>Set up, configured, and installed new hardware equipment and peripherals to LAN.</li>
-          <li>Performed routine software and hardware maintenance.</li>
-          <li>Provided efficient technical support to all end users.</li>
-          <li>Maintained inventory of hardware devices.</li>
-          <li>Investigated and resolved hardware and software faults.</li>
-          <li>Ensured daily service-level agreements were consistently met.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Education & Certificates -->
-    <section id="education" class="reveal">
-      <h2 class="section-title">Education &amp; Certifications</h2>
-      <div class="grid-2">
-        <div class="card">
-          <h3 class="card-subtitle">Education</h3>
-          <div class="edu-item">
-            <div class="job-title" style="font-size: 1.05rem;">National Diploma in Information Technology</div>
-            <div class="job-company">Tshwane University of Technology</div>
-            <div class="muted-date">2017 - 2022</div>
-          </div>
-          <div class="edu-item" style="margin-top: 1.25rem;">
-            <div class="job-title" style="font-size: 1.05rem;">NSC</div>
-            <div class="job-company">Makgoka High School</div>
-            <div class="muted-date">2012 - 2016</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 class="card-subtitle">Certificates</h3>
-          <ul>
-            <li><strong>AWS Cloud Practitioner</strong></li>
-            <li><strong>ICDL Profile Certificate</strong></li>
-            <li><strong>Google AI Essentials</strong></li>
-          </ul>
-          <p class="reference-note">
-            <em>References: Upon Request</em>
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Comfort Mabelane</span>
+          </h1>
+          <div class="hero-role">IT Technician &amp; Operations Team Leader</div>
+          <p class="hero-bio">
+            Dedicated IT Technician holding a National Diploma in Information Technology with proven hands-on experience in ICT end-user support, desktop technical support, and team leadership. Specialized in hardware/software deployment, LAN configuration, and resolving technical faults strictly within SLA targets.
           </p>
+          <div class="cta-group">
+            <button class="btn-primary nav-jump" data-target="contact">Contact Me</button>
+            <button class="btn-secondary nav-jump" data-target="qualifications">View Qualifications</button>
+            <button class="btn-secondary" id="quick-copy-email">Copy Email</button>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-number">4+ Yrs</div>
+            <div class="stat-label">IT Support &amp; Team Leadership</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Industry Certifications</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">SLA &amp; Fault Resolution Focus</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">N.Dip</div>
+            <div class="stat-label">Information Technology (TUT)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlights-grid">
+        <div class="glass-card">
+          <span class="highlight-icon">🖥️</span>
+          <h3 class="highlight-title">ICT End-User &amp; Desktop Support</h3>
+          <p class="highlight-desc">Experienced in configuring workstations, peripherals, and LAN infrastructure while maintaining accurate hardware inventories.</p>
+        </div>
+        <div class="glass-card">
+          <span class="highlight-icon">👥</span>
+          <h3 class="highlight-title">Team Leadership &amp; Reporting</h3>
+          <p class="highlight-desc">Proven track record leading teams at the Department of Home Affairs, tracking KPIs, and reporting directly to upper management.</p>
+        </div>
+        <div class="glass-card">
+          <span class="highlight-icon">☁️</span>
+          <h3 class="highlight-title">Cloud &amp; Modern Tech Ready</h3>
+          <p class="highlight-desc">Certified in AWS Cloud Practitioner, Google AI Essentials, and ICDL alongside SQL database and Windows Server skills.</p>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="reveal">
-      <h2 class="section-title">Technical &amp; Professional Skills</h2>
-      <div class="skills-wrap">
-        <span class="skill-badge">Communication Skills</span>
-        <span class="skill-badge">Task Tracking</span>
-        <span class="skill-badge">Microsoft 365 &amp; MS Office</span>
-        <span class="skill-badge">VS Code</span>
-        <span class="skill-badge">Attention to Detail</span>
-        <span class="skill-badge">Printer &amp; Network Troubleshooting</span>
-        <span class="skill-badge">Teamwork</span>
-        <span class="skill-badge">MySQL &amp; PostgreSQL</span>
-        <span class="skill-badge">Hardware &amp; Software Installation</span>
-        <span class="skill-badge">LAN Setup &amp; Configuration</span>
-        <span class="skill-badge">Windows Server / Desktop</span>
+    <!-- ==========================================
+         PAGE 2: PERSONAL DETAILS
+    =========================================== -->
+    <section id="page-personal" class="page-view">
+      <div class="page-header">
+        <div class="page-kicker">// 02. Profile Information</div>
+        <h2 class="page-heading">Personal Details</h2>
+      </div>
+
+      <div class="details-grid">
+        <div class="glass-card">
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">Bio &amp; Contact Information</h3>
+          <div class="info-row">
+            <span class="info-label">Full Name</span>
+            <span class="info-value">Comfort Mabelane</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Current Role</span>
+            <span class="info-value">Team Leader / IT Technician</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Residential Address</span>
+            <span class="info-value">101 Francis Baard, Pretoria, 0001</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Mobile Number</span>
+            <span class="info-value">083 500 1655</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Email Address</span>
+            <span class="info-value">Kgwadusenny@gmail.com</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">References</span>
+            <span class="info-value">Available Upon Request</span>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Core Professional Strengths</h3>
+          <p style="color: var(--muted); font-size: 0.94rem;">Key interpersonal and operational attributes brought to every technical environment:</p>
+          <ul class="competency-list">
+            <li><span>🎯</span> Strong Attention to Detail &amp; Accuracy</li>
+            <li><span>🗣️</span> Clear End-User &amp; Management Communication</li>
+            <li><span>📋</span> Structured Task Tracking &amp; Documentation</li>
+            <li><span>🤝</span> Collaborative Teamwork &amp; Staff Mentorship</li>
+            <li><span>⚡</span> Calm Under Pressure &amp; SLA-Driven Execution</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <!-- Contact Me Form (Formspree) -->
-    <section id="contact" class="reveal">
-      <h2 class="section-title">Contact Me</h2>
-      <div class="card">
-        <div class="contact-grid">
-          <div class="contact-info">
-            <p>Have an IT support inquiry, professional opportunity, or question? Fill out the form and it will be delivered straight to my inbox.</p>
-            <div class="contact-detail">
-              <strong>Email</strong>
-              Kgwadusenny@gmail.com
+    <!-- ==========================================
+         PAGE 3: EXPERIENCE & SKILLS
+    =========================================== -->
+    <section id="page-experience" class="page-view">
+      <div class="page-header">
+        <div class="page-kicker">// 03. Career Track &amp; Stack</div>
+        <h2 class="page-heading">Experience &amp; Technical Skills</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="glass-card">
+          <div class="role-top">
+            <div>
+              <div class="role-title">Team Leader</div>
+              <div class="role-org">Department of Home Affairs</div>
             </div>
-            <div class="contact-detail">
-              <strong>Phone</strong>
-              083 500 1655
+            <span class="role-badge">Feb 2024 – Mar 2026</span>
+          </div>
+          <ul class="role-list">
+            <li>Guiding the team towards achieving operational goals while fostering a positive, productive, and collaborative work environment.</li>
+            <li>Providing daily guidance and support while keeping team members informed about changes, updates, and critical information.</li>
+            <li>Tracking progress by regularly reviewing team performance and productivity metrics.</li>
+            <li>Maintaining accurate records, reports, and documentation related to team performance and activities.</li>
+            <li>Providing regular updates and performance reports to upper management highlighting challenges and achievements.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card">
+          <div class="role-top">
+            <div>
+              <div class="role-title">IT Help Desk &amp; Support</div>
+              <div class="role-org">LEDET</div>
             </div>
-            <div class="contact-detail">
-              <strong>Location</strong>
-              101 Francis Baard, Pretoria, 0001
+            <span class="role-badge">Mar 2021 – Oct 2023</span>
+          </div>
+          <ul class="role-list">
+            <li>Set up, configured, and installed new hardware equipment and peripherals onto the Local Area Network (LAN).</li>
+            <li>Performed routine software and hardware maintenance to ensure system reliability.</li>
+            <li>Provided efficient, responsive technical support to all end users across the organization.</li>
+            <li>Maintained a comprehensive and up-to-date inventory of all hardware devices.</li>
+            <li>Investigated, diagnosed, and resolved hardware and software faults while ensuring daily SLAs were met.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="skills-categories">
+        <div class="glass-card">
+          <h3 style="font-size: 1.1rem;">Infrastructure &amp; Support</h3>
+          <div class="skill-chips">
+            <span class="chip">Hardware &amp; Software Installation</span>
+            <span class="chip">Windows Server / Desktop</span>
+            <span class="chip">LAN Configuration</span>
+            <span class="chip">Printer &amp; Network Troubleshooting</span>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3 style="font-size: 1.1rem;">Software &amp; Databases</h3>
+          <div class="skill-chips">
+            <span class="chip">Microsoft 365</span>
+            <span class="chip">MS Office Suite</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">VS Code</span>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3 style="font-size: 1.1rem;">Operations &amp; Leadership</h3>
+          <div class="skill-chips">
+            <span class="chip">Task Tracking</span>
+            <span class="chip">SLA Management</span>
+            <span class="chip">Communication Skills</span>
+            <span class="chip">Teamwork</span>
+            <span class="chip">Attention to Detail</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 4: QUALIFICATIONS & CERTIFICATIONS
+    =========================================== -->
+    <section id="page-qualifications" class="page-view">
+      <div class="page-header">
+        <div class="page-kicker">// 04. Academic &amp; Credentials</div>
+        <h2 class="page-heading">Qualifications &amp; Certifications</h2>
+      </div>
+
+      <div class="qual-grid">
+        <div class="glass-card">
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Academic Education</h3>
+          <p style="color: var(--muted); font-size: 0.92rem;">Formal tertiary and secondary qualifications.</p>
+
+          <div class="edu-block">
+            <span class="role-badge" style="display: inline-block; margin-bottom: 0.6rem;">2017 – 2022</span>
+            <div style="font-size: 1.15rem; font-weight: 800;">National Diploma in Information Technology</div>
+            <div style="color: var(--primary); font-weight: 700; margin-top: 0.2rem;">Tshwane University of Technology</div>
+          </div>
+
+          <div class="edu-block">
+            <span class="role-badge" style="display: inline-block; margin-bottom: 0.6rem;">2012 – 2016</span>
+            <div style="font-size: 1.15rem; font-weight: 800;">National Senior Certificate (NSC)</div>
+            <div style="color: var(--primary); font-weight: 700; margin-top: 0.2rem;">Makgoka High School</div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Professional Certificates</h3>
+          <p style="color: var(--muted); font-size: 0.92rem;">Verified industry certifications in cloud, AI, and digital literacy.</p>
+
+          <div class="cert-card">
+            <div class="cert-badge">☁️</div>
+            <div>
+              <div style="font-weight: 800; font-size: 1.05rem;">AWS Cloud Practitioner</div>
+              <div style="color: var(--muted); font-size: 0.88rem;">Amazon Web Services</div>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-badge">🤖</div>
+            <div>
+              <div style="font-weight: 800; font-size: 1.05rem;">Google AI Essentials</div>
+              <div style="color: var(--muted); font-size: 0.88rem;">Google Career Certificates</div>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-badge">💻</div>
+            <div>
+              <div style="font-weight: 800; font-size: 1.05rem;">ICDL Profile Certificate</div>
+              <div style="color: var(--muted); font-size: 0.88rem;">International Computer Driving Licence</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 5: CONTACT ME (FORMSPREE)
+    =========================================== -->
+    <section id="page-contact" class="page-view">
+      <div class="page-header">
+        <div class="page-kicker">// 05. Get In Touch</div>
+        <h2 class="page-heading">Contact Me</h2>
+      </div>
+
+      <div class="glass-card">
+        <div class="contact-layout">
+          <div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">Let's Connect</h3>
+            <p style="color: var(--muted); margin-bottom: 1.5rem; font-size: 0.96rem;">
+              Looking for an experienced IT Technician or Team Leader? Send a direct message using the form and it will go straight to my email inbox.
+            </p>
+
+            <div class="contact-channel">
+              <div class="channel-icon">✉️</div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">EMAIL</div>
+                <div style="font-weight: 700;">Kgwadusenny@gmail.com</div>
+              </div>
+            </div>
+
+            <div class="contact-channel">
+              <div class="channel-icon">📞</div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">PHONE</div>
+                <div style="font-weight: 700;">083 500 1655</div>
+              </div>
+            </div>
+
+            <div class="contact-channel">
+              <div class="channel-icon">📍</div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">LOCATION</div>
+                <div style="font-weight: 700;">101 Francis Baard, Pretoria, 0001</div>
+              </div>
             </div>
           </div>
 
           <form id="contact-form" action="https://formspree.io/f/xljbjonr" method="POST">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required />
+            <div class="field-group">
+              <label for="name">Your Full Name</label>
+              <input type="text" id="name" name="name" placeholder="e.g. Thabo Mokoena" required />
             </div>
 
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            <div class="field-group">
+              <label for="email">Your Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@company.com" required />
             </div>
 
-            <div class="form-group">
+            <div class="field-group">
               <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="Job Opportunity / Inquiry" required />
+              <input type="text" id="subject" name="subject" placeholder="Job Opportunity / IT Support Inquiry" required />
             </div>
 
-            <div class="form-group">
+            <div class="field-group">
               <label for="message">Message</label>
               <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
             </div>
 
-            <button type="submit" id="submit-btn" class="btn" style="width: 100%; justify-content: center; color: #ffffff;">Send Message</button>
-            <p id="form-status" class="form-status" aria-live="polite"></p>
+            <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%;">Send Message</button>
+            <p id="form-status" class="status-msg" aria-live="polite"></p>
           </form>
         </div>
       </div>
@@ -716,103 +1039,107 @@
   </main>
 
   <footer>
-    &copy; 2026 Comfort Mabelane. All rights reserved.
+    &copy; 2026 Comfort Mabelane &bull; Pretoria, South Africa
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const themeToggle = document.getElementById('theme-toggle');
-      const savedTheme = localStorage.getItem('portfolio-theme');
+      // 1. Multi-Page Tab Switching Logic
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const jumpButtons = document.querySelectorAll('.nav-jump, .brand');
+      const pages = document.querySelectorAll('.page-view');
+      const navTabsContainer = document.getElementById('nav-tabs');
 
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeToggle.textContent = '☀️';
+      function switchPage(pageId) {
+        pages.forEach(page => {
+          page.classList.remove('active');
+        });
+        tabButtons.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.target === pageId);
+        });
+
+        const targetPage = document.getElementById(`page-${pageId}`);
+        if (targetPage) {
+          targetPage.classList.add('active');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Close mobile menu after selection
+        navTabsContainer.classList.remove('open');
+      }
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => switchPage(btn.dataset.target));
+      });
+
+      jumpButtons.forEach(btn => {
+        btn.addEventListener('click', () => switchPage(btn.dataset.target));
+      });
+
+      // 2. Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      mobileMenuBtn.addEventListener('click', () => {
+        navTabsContainer.classList.toggle('open');
+      });
+
+      // 3. Dark / Light Mode Toggle (Defaults to Sleek Dark Theme)
+      const themeToggle = document.getElementById('theme-toggle');
+      const savedTheme = localStorage.getItem('cm-portfolio-theme');
+
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggle.textContent = '🌙';
       }
 
       themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        themeToggle.textContent = isDark ? '☀️' : '🌙';
-        localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
+        document.body.classList.toggle('light-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        themeToggle.textContent = isLight ? '🌙' : '☀️';
+        localStorage.setItem('cm-portfolio-theme', isLight ? 'light' : 'dark');
       });
 
-      const menuToggle = document.getElementById('menu-toggle');
-      const navMenu = document.getElementById('nav-menu');
-      const navLinks = document.querySelectorAll('.nav-link');
-
-      menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('open');
-      });
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          navMenu.classList.remove('open');
-        });
-      });
-
-      const copyEmailBtn = document.getElementById('copy-email-btn');
-      copyEmailBtn.addEventListener('click', () => {
+      // 4. Quick Copy Email Button
+      const copyBtn = document.getElementById('quick-copy-email');
+      copyBtn.addEventListener('click', () => {
         navigator.clipboard.writeText('Kgwadusenny@gmail.com').then(() => {
-          const originalText = copyEmailBtn.textContent;
-          copyEmailBtn.textContent = 'Email Copied!';
+          const prev = copyBtn.textContent;
+          copyBtn.textContent = '✓ Email Copied';
           setTimeout(() => {
-            copyEmailBtn.textContent = originalText;
+            copyBtn.textContent = prev;
           }, 2500);
         });
       });
 
-      const sections = document.querySelectorAll('section');
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-
-              const id = entry.target.getAttribute('id');
-              navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-              });
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-
-      sections.forEach(section => observer.observe(section));
-
+      // 5. Formspree Asynchronous Submission
       const contactForm = document.getElementById('contact-form');
       const formStatus = document.getElementById('form-status');
       const submitBtn = document.getElementById('submit-btn');
 
-      contactForm.addEventListener('submit', async event => {
-        event.preventDefault();
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.textContent = 'Sending Message...';
         formStatus.textContent = '';
-        formStatus.className = 'form-status';
-
-        const formData = new FormData(contactForm);
+        formStatus.className = 'status-msg';
 
         try {
           const response = await fetch(contactForm.action, {
             method: contactForm.method,
-            body: formData,
-            headers: {
-              Accept: 'application/json'
-            }
+            body: new FormData(contactForm),
+            headers: { Accept: 'application/json' }
           });
 
           if (response.ok) {
-            formStatus.textContent = 'Thank you! Your message has been sent successfully.';
-            formStatus.classList.add('success');
+            formStatus.textContent = '✓ Thank you! Your message has been sent to Comfort.';
+            formStatus.classList.add('ok');
             contactForm.reset();
           } else {
-            formStatus.textContent = 'Oops! There was a problem submitting your form. Please try again.';
-            formStatus.classList.add('error');
+            formStatus.textContent = '✕ Something went wrong. Please try again.';
+            formStatus.classList.add('err');
           }
-        } catch (error) {
-          formStatus.textContent = 'Network error. Please check your connection and try again.';
-          formStatus.classList.add('error');
+        } catch (err) {
+          formStatus.textContent = '✕ Network error. Please check your connection.';
+          formStatus.classList.add('err');
         } finally {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Message';
