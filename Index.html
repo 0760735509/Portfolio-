@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comfort Mabelane | IT Technician & Team Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --border: #e2e8f0;
+      --badge-bg: #eff6ff;
+      --badge-text: #1e40af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-contact span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    /* Cards & Timeline */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .job-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .job-company {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .job-date {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--bg);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .card ul {
+      padding-left: 1.25rem;
+      color: var(--muted);
+    }
+
+    .card li {
+      margin-bottom: 0.45rem;
+    }
+
+    /* Two-column Grid for Education & Certs */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Skills Badges */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Contact Form */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 2rem;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .contact-detail {
+      margin-bottom: 0.85rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-detail strong {
+      display: block;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: var(--bg);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #ffffff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        gap: 1rem;
+        font-size: 0.85rem;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">Comfort<span>.</span></a>
+      <nav>
+        <ul>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact Me</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / Profile -->
+    <section class="hero" id="about">
+      <span class="hero-tag">IT Technician &amp; Team Leader</span>
+      <h1>Comfort Mabelane</h1>
+      <p class="hero-subtitle">
+        Dedicated IT Technician with a National Diploma in Information Technology and proven experience in ICT end-user support, desktop technical support, and team leadership. Skilled in hardware/software installation, maintenance, and resolving faults within strict SLAs.
+      </p>
+      <div class="hero-contact">
+        <span>📍 101 Francis Baard, Pretoria, 0001</span>
+        <span>📞 083 500 1655</span>
+        <span>✉️ Kgwadusenny@gmail.com</span>
+      </div>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </section>
+
+    <!-- Employment History -->
+    <section id="experience">
+      <h2 class="section-title">Employment History</h2>
+
+      <div class="card">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Team Leader</div>
+            <div class="job-company">Department of Home Affairs</div>
+          </div>
+          <span class="job-date">Feb 2024 – Mar 2026</span>
+        </div>
+        <ul>
+          <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment.</li>
+          <li>Providing guidance and support while keeping the team informed about operational changes, updates, and key information.</li>
+          <li>Tracking progress by regularly reviewing team performance and productivity, and maintaining accurate records, reports, and documentation.</li>
+          <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="job-header">
+          <div>
+            <div class="job-title">IT Help Desk &amp; Support</div>
+            <div class="job-company">LEDET</div>
+          </div>
+          <span class="job-date">Mar 2021 – Oct 2023</span>
+        </div>
+        <ul>
+          <li>Set up, configured, and installed new hardware equipment and peripherals onto the LAN.</li>
+          <li>Performed routine software and hardware maintenance and maintained an accurate inventory of hardware devices.</li>
+          <li>Provided efficient technical support to end users, investigating and resolving hardware and software faults.</li>
+          <li>Ensured daily service-level agreements (SLAs) were consistently met.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education & Certificates -->
+    <section id="education">
+      <h2 class="section-title">Education &amp; Certifications</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Education</h3>
+          <div style="margin-bottom: 1.25rem;">
+            <div class="job-title" style="font-size: 1rem;">National Diploma in Information Technology</div>
+            <div class="job-company">Tshwane University of Technology</div>
+            <div style="font-size: 0.85rem; color: var(--muted);">2017 – 2022</div>
+          </div>
+          <div>
+            <div class="job-title" style="font-size: 1rem;">National Senior Certificate (NSC)</div>
+            <div class="job-company">Makgoka High School</div>
+            <div style="font-size: 0.85rem; color: var(--muted);">2012 – 2016</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Certificates</h3>
+          <ul>
+            <li><strong>AWS Cloud Practitioner</strong></li>
+            <li><strong>Google AI Essentials</strong></li>
+            <li><strong>ICDL Profile Certificate</strong></li>
+          </ul>
+          <p style="margin-top: 1.25rem; font-size: 0.9rem; color: var(--muted);">
+            <em>References available upon request.</em>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="section-title">Technical &amp; Professional Skills</h2>
+      <div class="skills-wrap">
+        <span class="skill-badge">Hardware &amp; Software Installation</span>
+        <span class="skill-badge">Windows Server / Desktop</span>
+        <span class="skill-badge">Printer &amp; Network Troubleshooting (LAN)</span>
+        <span class="skill-badge">Microsoft 365 &amp; MS Office</span>
+        <span class="skill-badge">MySQL</span>
+        <span class="skill-badge">PostgreSQL</span>
+        <span class="skill-badge">VS Code</span>
+        <span class="skill-badge">Task Tracking &amp; SLA Management</span>
+        <span class="skill-badge">Communication &amp; Teamwork</span>
+        <span class="skill-badge">Attention to Detail</span>
+      </div>
+    </section>
+
+    <!-- Contact Me Form (Formspree) -->
+    <section id="contact">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="card">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p>Have a question, opportunity, or IT support inquiry? Fill out the form and I will get back to you promptly.</p>
+            <div class="contact-detail">
+              <strong>Email</strong>
+              Kgwadusenny@gmail.com
+            </div>
+            <div class="contact-detail">
+              <strong>Phone</strong>
+              083 500 1655
+            </div>
+            <div class="contact-detail">
+              <strong>Location</strong>
+              101 Francis Baard, Pretoria, 0001
+            </div>
+          </div>
+
+          <!-- Replace YOUR_FORMSPREE_ID below with your actual Formspree form ID -->
+          <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Job Opportunity / Inquiry" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Comfort Mabelane. All rights reserved.
+  </footer>
+
+</body>
+</html>
