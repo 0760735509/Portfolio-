@@ -9,33 +9,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #070b14;
-      --bg-mesh: radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12), transparent 40%),
-                 radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.14), transparent 45%);
-      --surface: rgba(15, 23, 42, 0.9);
-      --surface-solid: #0f172a;
+      --bg: #030712;
+      --surface: #0b1329;
+      --surface-solid: #0b1329;
       --text: #f8fafc;
       --muted: #94a3b8;
-      --primary: #38bdf8;
-      --gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
-      --border: rgba(148, 163, 184, 0.14);
-      --border-glow: rgba(56, 189, 248, 0.4);
-      --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.4);
+      --gradient: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      --border: rgba(59, 130, 246, 0.2);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     }
 
     body.light-mode {
-      --bg: #f1f5f9;
-      --bg-mesh: radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.08), transparent 45%),
-                 radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.08), transparent 45%);
-      --surface: rgba(255, 255, 255, 0.95);
+      --bg: #f8fafc;
+      --surface: #ffffff;
       --surface-solid: #ffffff;
       --text: #0f172a;
-      --muted: #475569;
+      --muted: #64748b;
       --primary: #2563eb;
-      --gradient: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
-      --border: rgba(15, 23, 42, 0.1);
-      --border-glow: rgba(37, 99, 235, 0.35);
-      --shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.08);
+      --primary-glow: rgba(37, 99, 235, 0.2);
+      --gradient: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      --border: rgba(37, 99, 235, 0.15);
+      --shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -47,8 +43,6 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg);
-      background-image: var(--bg-mesh);
-      background-attachment: fixed;
       color: var(--text);
       min-height: 100vh;
       display: flex;
@@ -101,7 +95,7 @@
       justify-content: center;
       font-size: 0.95rem;
       font-weight: 800;
-      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+      box-shadow: 0 0 15px var(--primary-glow);
     }
 
     .nav-tabs {
@@ -134,7 +128,7 @@
     .tab-btn.active {
       background: var(--gradient);
       color: #ffffff;
-      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+      box-shadow: 0 0 15px var(--primary-glow);
     }
 
     .nav-controls {
@@ -167,13 +161,13 @@
       display: none;
     }
 
-    /* Main Container with top padding for fixed header */
+    /* Main Container */
     main {
       flex: 1;
       max-width: 1120px;
       width: 100%;
       margin: 0 auto;
-      padding: 90px 1.5rem 4rem 1.5rem;
+      padding: 100px 1.5rem 4rem 1.5rem;
     }
 
     .page-view {
@@ -190,110 +184,91 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Glass Cards */
+    /* Glass & Glow Cards */
     .glass-card {
       background: var(--surface);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 2rem;
+      padding: 2.5rem;
       box-shadow: var(--shadow);
-      transition: border-color 0.25s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .glass-card:hover {
-      border-color: var(--border-glow);
-    }
-
-    /* GENERAL PAGE */
-    .hero-panel {
+    /* Slick Hero Section (Matching Reference Style) */
+    .hero-split {
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 2.5rem;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 3rem;
       align-items: center;
-      margin-bottom: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3.5rem;
+      box-shadow: var(--shadow);
+      position: relative;
     }
 
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #34d399;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      padding: 0.35rem 0.85rem;
-      border-radius: 999px;
-      margin-bottom: 1.25rem;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+    .hero-split::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 250px; height: 250px;
+      background: var(--primary);
+      filter: blur(100px);
+      opacity: 0.15;
+      pointer-events: none;
     }
 
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
-    }
-
-    .hero-title {
-      font-size: 3rem;
+    .hero-greeting {
+      font-size: 2.5rem;
       font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -1px;
+      line-height: 1.2;
       margin-bottom: 0.5rem;
-    }
-
-    .gradient-text {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
     }
 
     .hero-role {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--muted);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
       margin-bottom: 1.25rem;
     }
 
-    .hero-bio {
+    .hero-desc {
       color: var(--muted);
       font-size: 1.02rem;
       line-height: 1.75;
       margin-bottom: 2rem;
     }
 
-    .cta-group {
+    .btn-group {
       display: flex;
+      gap: 1rem;
       flex-wrap: wrap;
-      gap: 0.9rem;
     }
 
-    .btn-primary {
+    .btn-main {
       background: var(--gradient);
       color: #ffffff;
       border: none;
-      padding: 0.85rem 1.65rem;
+      padding: 0.85rem 1.75rem;
       border-radius: 12px;
       font-family: inherit;
       font-weight: 700;
       font-size: 0.95rem;
       cursor: pointer;
-      box-shadow: 0 8px 20px -4px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 0 20px var(--primary-glow);
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .btn-primary:hover {
+    .btn-main:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 25px -4px rgba(56, 189, 248, 0.45);
+      box-shadow: 0 0 30px var(--primary-glow);
     }
 
-    .btn-secondary {
-      background: rgba(148, 163, 184, 0.1);
+    .btn-outline {
+      background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
       padding: 0.85rem 1.5rem;
@@ -305,76 +280,62 @@
       transition: all 0.2s;
     }
 
-    .btn-secondary:hover {
+    .btn-outline:hover {
       border-color: var(--primary);
-      background: rgba(56, 189, 248, 0.08);
+      background: rgba(59, 130, 246, 0.05);
     }
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+    /* Photo Frame Placeholder */
+    .hero-photo-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
     }
 
-    .stat-box {
-      background: rgba(148, 163, 184, 0.06);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.35rem;
+    .photo-frame {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(29, 78, 216, 0.4));
+      border: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px var(--primary-glow);
+      overflow: hidden;
+      position: relative;
     }
 
-    .stat-number {
-      font-size: 1.85rem;
-      font-weight: 800;
-      color: var(--primary);
-      line-height: 1.2;
-      margin-bottom: 0.3rem;
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
+    .photo-placeholder-text {
+      text-align: center;
       color: var(--muted);
+      font-size: 0.85rem;
       font-weight: 600;
+      padding: 1rem;
     }
 
+    /* Highlights & Grid Layouts */
     .highlights-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
-    .highlight-icon {
-      font-size: 1.6rem;
-      margin-bottom: 0.75rem;
-      display: inline-block;
-    }
-
-    .highlight-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.45rem;
-    }
-
-    .highlight-desc {
-      font-size: 0.93rem;
-      color: var(--muted);
-    }
-
-    /* PAGE HEADERS */
     .page-header {
       margin-bottom: 2rem;
     }
 
     .page-heading {
-      font-size: 2.1rem;
+      font-size: 2.2rem;
       font-weight: 800;
       letter-spacing: -0.5px;
     }
 
-    /* PERSONAL DETAILS PAGE */
-    .details-grid {
+    .details-grid, .qual-grid, .contact-layout {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
     }
 
@@ -382,287 +343,68 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.05rem 0;
+      padding: 1.1rem 0;
       border-bottom: 1px solid var(--border);
       gap: 1rem;
     }
 
-    .info-row:last-child {
-      border-bottom: none;
-    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { color: var(--muted); font-weight: 600; font-size: 0.92rem; }
+    .info-value { font-weight: 700; font-size: 0.98rem; text-align: right; }
 
-    .info-label {
-      color: var(--muted);
-      font-size: 0.92rem;
-      font-weight: 600;
-    }
+    /* Timeline & Cards */
+    .timeline { display: grid; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .role-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+    .role-title { font-size: 1.25rem; font-weight: 800; }
+    .role-org { color: var(--primary); font-weight: 700; font-size: 1rem; }
+    .role-badge { font-size: 0.82rem; font-weight: 600; padding: 0.35rem 0.85rem; border-radius: 8px; background: rgba(59, 130, 246, 0.12); color: var(--primary); border: 1px solid var(--border); }
+    .role-list { padding-left: 1.25rem; color: var(--muted); }
+    .role-list li { margin-bottom: 0.55rem; font-size: 0.97rem; }
 
-    .info-value {
-      font-weight: 700;
-      font-size: 0.98rem;
-      text-align: right;
-    }
+    .skills-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+    .chip { font-size: 0.88rem; font-weight: 600; padding: 0.5rem 0.9rem; border-radius: 10px; background: rgba(148, 163, 184, 0.08); border: 1px solid var(--border); transition: all 0.2s; }
+    .chip:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
 
-    .competency-list {
-      list-style: none;
-      display: grid;
-      gap: 0.9rem;
-      margin-top: 1rem;
-    }
-
-    .competency-list li {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: rgba(148, 163, 184, 0.06);
-      padding: 0.85rem 1rem;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      font-weight: 600;
-      font-size: 0.94rem;
-    }
-
-    /* EXPERIENCE & SKILLS PAGE */
-    .timeline {
-      display: grid;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .role-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .role-title {
-      font-size: 1.3rem;
-      font-weight: 800;
-    }
-
-    .role-org {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .role-badge {
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 0.35rem 0.85rem;
-      border-radius: 8px;
-      background: rgba(56, 189, 248, 0.12);
-      color: var(--primary);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-    }
-
-    .role-list {
-      padding-left: 1.25rem;
-      color: var(--muted);
-    }
-
-    .role-list li {
-      margin-bottom: 0.55rem;
-      font-size: 0.97rem;
-    }
-
-    .skills-categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .skill-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1rem;
-    }
-
-    .chip {
-      font-size: 0.88rem;
-      font-weight: 600;
-      padding: 0.5rem 0.9rem;
-      border-radius: 10px;
-      background: rgba(148, 163, 184, 0.08);
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-    }
-
-    .chip:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    /* QUALIFICATIONS PAGE */
-    .qual-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .edu-block {
-      padding: 1.25rem;
-      border-radius: 14px;
-      background: rgba(148, 163, 184, 0.05);
-      border: 1px solid var(--border);
-      margin-top: 1rem;
-    }
-
-    .cert-card {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.1rem 1.25rem;
-      border-radius: 14px;
-      background: rgba(148, 163, 184, 0.05);
-      border: 1px solid var(--border);
-      margin-top: 1rem;
-      transition: border-color 0.2s;
-    }
-
-    .cert-card:hover {
-      border-color: var(--primary);
-    }
+    .edu-block { padding: 1.25rem; border-radius: 14px; background: rgba(148, 163, 184, 0.04); border: 1px solid var(--border); margin-top: 1rem; }
+    .cert-card { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; border-radius: 14px; background: rgba(148, 163, 184, 0.04); border: 1px solid var(--border); margin-top: 1rem; }
 
     .cert-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--gradient);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
+      width: 44px; height: 44px; border-radius: 12px; background: var(--gradient); color: #ffffff;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; box-shadow: 0 0 10px var(--primary-glow);
     }
 
-    /* CONTACT PAGE */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.45fr;
-      gap: 2.5rem;
+    /* Contact Form */
+    .contact-channel { display: flex; align-items: center; gap: 1rem; padding: 1rem; border-radius: 14px; background: rgba(148, 163, 184, 0.04); border: 1px solid var(--border); margin-bottom: 1rem; }
+    .channel-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(59, 130, 246, 0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
+
+    .field-group { margin-bottom: 1.2rem; }
+    .field-group label { display: block; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.45rem; color: var(--muted); }
+    .field-group input, .field-group textarea {
+      width: 100%; padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border);
+      background: rgba(148, 163, 184, 0.04); color: var(--text); font-family: inherit; font-size: 0.96rem; transition: all 0.2s;
+    }
+    .field-group input:focus, .field-group textarea:focus {
+      outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); background: var(--surface-solid);
     }
 
-    .contact-channel {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      border-radius: 14px;
-      background: rgba(148, 163, 184, 0.06);
-      border: 1px solid var(--border);
-      margin-bottom: 1rem;
-    }
-
-    .channel-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: rgba(56, 189, 248, 0.14);
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.15rem;
-      flex-shrink: 0;
-    }
-
-    .field-group {
-      margin-bottom: 1.2rem;
-    }
-
-    .field-group label {
-      display: block;
-      font-size: 0.88rem;
-      font-weight: 700;
-      margin-bottom: 0.45rem;
-      color: var(--muted);
-    }
-
-    .field-group input,
-    .field-group textarea {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(148, 163, 184, 0.06);
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.96rem;
-      transition: all 0.2s;
-    }
-
-    .field-group input:focus,
-    .field-group textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
-      background: var(--surface-solid);
-    }
-
-    .status-msg {
-      margin-top: 1rem;
-      font-size: 0.94rem;
-      font-weight: 600;
-    }
-
+    .status-msg { margin-top: 1rem; font-size: 0.94rem; font-weight: 600; }
     .status-msg.ok { color: #10b981; }
     .status-msg.err { color: #ef4444; }
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--muted);
-      font-size: 0.88rem;
-      border-top: 1px solid var(--border);
-      background: var(--surface);
-    }
+    footer { text-align: center; padding: 2rem 1rem; color: var(--muted); font-size: 0.88rem; border-top: 1px solid var(--border); background: var(--surface); }
 
-    /* Responsive Breakpoints */
+    /* Responsive */
     @media (max-width: 860px) {
-      .hero-panel,
-      .details-grid,
-      .qual-grid,
-      .contact-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-title {
-        font-size: 2.3rem;
-      }
-
-      .mobile-menu-btn {
-        display: flex;
-      }
-
+      .hero-split, .details-grid, .qual-grid, .contact-layout { grid-template-columns: 1fr; }
+      .hero-greeting { font-size: 2.1rem; }
+      .mobile-menu-btn { display: flex; }
       .nav-tabs {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        background: var(--surface-solid);
-        padding: 1rem 1.5rem;
-        box-shadow: var(--shadow);
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
+        display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column;
+        background: var(--surface-solid); padding: 1rem 1.5rem; box-shadow: var(--shadow); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
       }
-
-      .nav-tabs.open {
-        display: flex;
-      }
-
-      .tab-btn {
-        text-align: left;
-        padding: 0.75rem 1rem;
-      }
+      .nav-tabs.open { display: flex; }
+      .tab-btn { text-align: left; padding: 0.75rem 1rem; }
     }
   </style>
 </head>
@@ -693,45 +435,38 @@
 
   <main>
     <!-- ==========================================
-         PAGE 1: GENERAL (OVERVIEW)
+         PAGE 1: GENERAL (HERO & OVERVIEW)
     =========================================== -->
     <section id="page-general" class="page-view active">
-      <div class="glass-card hero-panel">
+      <div class="hero-split">
         <div>
-          <div class="status-pill">
-            <span class="pulse-dot"></span>
-            AVAILABLE FOR IT &amp; LEADERSHIP ROLES
+          <div class="status-pill" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; font-weight:700; color:#34d399; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.25); padding:0.35rem 0.85rem; border-radius:999px; margin-bottom:1.25rem; text-transform:uppercase;">
+            <span style="width:8px; height:8px; border-radius:50%; background:#10b981; box-shadow:0 0 8px #10b981;"></span>
+            Available for IT Roles
           </div>
-          <h1 class="hero-title">
+          <h1 class="hero-greeting">
             Hi, I'm <span class="gradient-text">Comfort Mabelane</span>
           </h1>
-          <div class="hero-role">IT Technician &amp; Operations Team Leader</div>
-          <p class="hero-bio">
-            Dedicated IT Technician holding a National Diploma in Information Technology[span_0](start_span)[span_0](end_span) with proven hands-on experience in ICT end-user support, desktop technical support, and team leadership[span_1](start_span)[span_1](end_span). Specialized in hardware/software deployment, LAN configuration[span_2](start_span)[span_2](end_span), and resolving technical faults strictly within SLA targets[span_3](start_span)[span_3](end_span).
+          <div class="hero-role">IT Technician &amp; Team Leader</div>
+          <p class="hero-desc">
+            Dedicated IT Technician holding a National Diploma in Information Technology[span_0](start_span)[span_0](end_span) with proven hands-on experience in ICT end-user support, desktop technical support, and team leadership[span_1](start_span)[span_1](end_span). Specialized in hardware/software deployment, LAN configuration[span_2](start_span)[span_2](end_span), and resolving faults within SLA targets[span_3](start_span)[span_3](end_span).
           </p>
-          <div class="cta-group">
-            <button class="btn-primary nav-jump" data-target="contact">Contact Me</button>
-            <button class="btn-secondary nav-jump" data-target="qualifications">View Qualifications</button>
-            <button class="btn-secondary" id="quick-copy-email">Copy Email</button>
+          <div class="btn-group">
+            <button class="btn-main nav-jump" data-target="contact">Let's Talk</button>
+            <button class="btn-outline nav-jump" data-target="qualifications">View Qualifications</button>
           </div>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat-box">
-            <div class="stat-number">4+ Yrs</div>
-            <div class="stat-label">IT Support &amp; Leadership</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Industry Certifications</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">SLA &amp; Fault Resolution Focus</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number">N.Dip</div>
-            <div class="stat-label">Information Technology (TUT)[span_4](start_span)[span_4](end_span)</div>
+        <div class="hero-photo-wrapper">
+          <div class="photo-frame">
+            <!-- 
+              TO ADD YOUR PICTURE LATER:
+              Upload your photo (e.g. comfort.jpg) to your GitHub repository and replace the text below with:
+              <img src="comfort.jpg" alt="Comfort Mabelane" style="width:100%; height:100%; object-fit:cover;" />
+            -->
+            <div class="photo-placeholder-text">
+              📷<br>Your Photo Here<br><span style="font-size:0.75rem; opacity:0.7;">(Upload comfort.jpg)</span>
+            </div>
           </div>
         </div>
       </div>
@@ -739,18 +474,18 @@
       <div class="highlights-grid">
         <div class="glass-card">
           <span class="highlight-icon">🖥️</span>
-          <h3 class="highlight-title">ICT End-User &amp; Desktop Support</h3>
-          <p class="highlight-desc">Experienced in configuring workstations, peripherals, and LAN infrastructure while maintaining accurate hardware inventories[span_5](start_span)[span_5](end_span).</p>
+          <h3 class="highlight-title">End-User Support</h3>
+          <p class="highlight-desc">Experienced in configuring workstations, peripherals, and LAN infrastructure while maintaining accurate hardware inventories[span_4](start_span)[span_4](end_span).</p>
         </div>
         <div class="glass-card">
           <span class="highlight-icon">👥</span>
-          <h3 class="highlight-title">Team Leadership &amp; Reporting</h3>
-          <p class="highlight-desc">Proven track record leading teams at the Department of Home Affairs, tracking KPIs, and reporting directly to upper management[span_6](start_span)[span_6](end_span).</p>
+          <h3 class="highlight-title">Team Leadership</h3>
+          <p class="highlight-desc">Proven track record leading teams at the Department of Home Affairs, tracking KPIs, and reporting to upper management[span_5](start_span)[span_5](end_span).</p>
         </div>
         <div class="glass-card">
           <span class="highlight-icon">☁️</span>
-          <h3 class="highlight-title">Cloud &amp; Modern Tech Ready</h3>
-          <p class="highlight-desc">Certified in AWS Cloud Practitioner, Google AI Essentials, and ICDL[span_7](start_span)[span_7](end_span) alongside database[span_8](start_span)[span_8](end_span) and Windows Server skills[span_9](start_span)[span_9](end_span).</p>
+          <h3 class="highlight-title">Cloud &amp; Certifications</h3>
+          <p class="highlight-desc">Certified in AWS Cloud Practitioner, Google AI Essentials, and ICDL[span_6](start_span)[span_6](end_span) alongside database[span_7](start_span)[span_7](end_span) and Windows Server skills[span_8](start_span)[span_8](end_span).</p>
         </div>
       </div>
     </section>
@@ -765,42 +500,41 @@
 
       <div class="details-grid">
         <div class="glass-card">
-          <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">Bio &amp; Contact Information</h3>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">Contact Information</h3>
           <div class="info-row">
             <span class="info-label">Full Name</span>
-            <span class="info-value">Comfort Mabelane[span_10](start_span)[span_10](end_span)</span>
+            <span class="info-value">Comfort Mabelane[span_9](start_span)[span_9](end_span)</span>
           </div>
           <div class="info-row">
             <span class="info-label">Current Role</span>
-            <span class="info-value">Team Leader / IT Technician[span_11](start_span)[span_11](end_span)</span>
+            <span class="info-value">Team Leader / IT Technician[span_10](start_span)[span_10](end_span)</span>
           </div>
           <div class="info-row">
-            <span class="info-label">Residential Address</span>
-            <span class="info-value">101 Francis Baard, Pretoria, 0001[span_12](start_span)[span_12](end_span)</span>
+            <span class="info-label">Address</span>
+            <span class="info-value">101 Francis Baard, Pretoria, 0001[span_11](start_span)[span_11](end_span)</span>
           </div>
           <div class="info-row">
-            <span class="info-label">Mobile Number</span>
-            <span class="info-value">083 500 1655[span_13](start_span)[span_13](end_span)</span>
+            <span class="info-label">Phone</span>
+            <span class="info-value">083 500 1655[span_12](start_span)[span_12](end_span)</span>
           </div>
           <div class="info-row">
-            <span class="info-label">Email Address</span>
-            <span class="info-value">Kgwadusenny@gmail.com[span_14](start_span)[span_14](end_span)</span>
+            <span class="info-label">Email</span>
+            <span class="info-value">Kgwadusenny@gmail.com[span_13](start_span)[span_13](end_span)</span>
           </div>
           <div class="info-row">
             <span class="info-label">References</span>
-            <span class="info-value">Available Upon Request[span_15](start_span)[span_15](end_span)</span>
+            <span class="info-value">Available Upon Request[span_14](start_span)[span_14](end_span)</span>
           </div>
         </div>
 
         <div class="glass-card">
-          <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Core Professional Strengths</h3>
-          <p style="color: var(--muted); font-size: 0.94rem;">Key interpersonal and operational attributes brought to every technical environment:</p>
-          <ul class="competency-list">
-            <li><span>🎯</span> Attention to Detail[span_16](start_span)[span_16](end_span)</li>
-            <li><span>🗣️</span> Communication Skills[span_17](start_span)[span_17](end_span)</li>
-            <li><span>📋</span> Task Tracking &amp; Documentation[span_18](start_span)[span_18](end_span)</li>
-            <li><span>🤝</span> Teamwork[span_19](start_span)[span_19](end_span)</li>
-            <li><span>⚡</span> SLA-Driven Execution[span_20](start_span)[span_20](end_span)</li>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Core Strengths</h3>
+          <p style="color: var(--muted); font-size: 0.94rem; margin-bottom: 1rem;">Key professional attributes brought to every technical setting:</p>
+          <ul style="list-style: none; display: grid; gap: 0.9rem;">
+            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>🎯</span> Attention to Detail[span_15](start_span)[span_15](end_span)</li>
+            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>🗣️</span> Communication Skills[span_16](start_span)[span_16](end_span)</li>
+            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>📋</span> Task Tracking &amp; Documentation[span_17](start_span)[span_17](end_span)</li>
+            <li style="display: flex; align-items: center; gap: 0.75rem; background: rgba(148,163,184,0.04); padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--border); font-weight: 600;"><span>🤝</span> Teamwork[span_18](start_span)[span_18](end_span)</li>
           </ul>
         </div>
       </div>
@@ -818,75 +552,65 @@
         <div class="glass-card">
           <div class="role-top">
             <div>
-              <div class="role-title">Team Leader[span_21](start_span)[span_21](end_span)</div>
-              <div class="role-org">Department of Home Affairs[span_22](start_span)[span_22](end_span)</div>
+              <div class="role-title">Team Leader[span_19](start_span)[span_19](end_span)</div>
+              <div class="role-org">Department of Home Affairs[span_20](start_span)[span_20](end_span)</div>
             </div>
-            <span class="role-badge">Feb 2024 - Mar 2026[span_23](start_span)[span_23](end_span)</span>
+            <span class="role-badge">Feb 2024 - Mar 2026[span_21](start_span)[span_21](end_span)</span>
           </div>
           <ul class="role-list">
-            <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment[span_24](start_span)[span_24](end_span).</li>
-            <li>Providing guidance and support, keeping the team informed about changes, updates, and important information[span_25](start_span)[span_25](end_span).</li>
-            <li>Tracking progress by regularly reviewing the team's performance and productivity[span_26](start_span)[span_26](end_span).</li>
-            <li>Maintaining necessary records, reports, and documentation related to team performance and activities[span_27](start_span)[span_27](end_span).</li>
-            <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements[span_28](start_span)[span_28](end_span).</li>
+            <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment[span_22](start_span)[span_22](end_span).</li>
+            <li>Providing guidance and support, keeping the team informed about changes, updates, and important information[span_23](start_span)[span_23](end_span).</li>
+            <li>Tracking progress by regularly reviewing the team's performance and productivity[span_24](start_span)[span_24](end_span).</li>
+            <li>Maintaining necessary records, reports, and documentation related to team performance and activities[span_25](start_span)[span_25](end_span).</li>
+            <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements[span_26](start_span)[span_26](end_span).</li>
           </ul>
         </div>
 
         <div class="glass-card">
           <div class="role-top">
             <div>
-              <div class="role-title">IT Help Desk &amp; Support[span_29](start_span)[span_29](end_span)</div>
-              <div class="role-org">LEDET[span_30](start_span)[span_30](end_span)</div>
+              <div class="role-title">IT Help Desk &amp; Support[span_27](start_span)[span_27](end_span)</div>
+              <div class="role-org">LEDET[span_28](start_span)[span_28](end_span)</div>
             </div>
-            <span class="role-badge">Mar 2021 - Oct 2023[span_31](start_span)[span_31](end_span)</span>
+            <span class="role-badge">Mar 2021 - Oct 2023[span_29](start_span)[span_29](end_span)</span>
           </div>
           <ul class="role-list">
-            <li>Set up, configure, and install new hardware equipment and peripherals to LAN[span_32](start_span)[span_32](end_span).</li>
-            <li>Perform software and hardware maintenance[span_33](start_span)[span_33](end_span).</li>
-            <li>Provide efficient technical support to all end users[span_34](start_span)[span_34](end_span).</li>
-            <li>Maintain inventory of hardware devices[span_35](start_span)[span_35](end_span).</li>
-            <li>Investigate and resolve hardware and software faults[span_36](start_span)[span_36](end_span).</li>
-            <li>Ensure daily service-level agreements are met[span_37](start_span)[span_37](end_span).</li>
+            <li>Set up, configure, and install new hardware equipment and peripherals to LAN[span_30](start_span)[span_30](end_span).</li>
+            <li>Perform software and hardware maintenance[span_31](start_span)[span_31](end_span).</li>
+            <li>Provide efficient technical support to all end users[span_32](start_span)[span_32](end_span).</li>
+            <li>Maintain inventory of hardware devices[span_33](start_span)[span_33](end_span).</li>
+            <li>Investigate and resolve hardware and software faults[span_34](start_span)[span_34](end_span).</li>
+            <li>Ensure daily service-level agreements are met[span_35](start_span)[span_35](end_span).</li>
           </ul>
         </div>
       </div>
 
       <div class="skills-categories">
         <div class="glass-card">
-          <h3 style="font-size: 1.1rem;">Infrastructure &amp; Support</h3>
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Infrastructure &amp; Support</h3>
           <div class="skill-chips">
-            <span class="chip">Hardware &amp; Software Installation[span_38](start_span)[span_38](end_span)</span>
-            <span class="chip">Windows Server / Desktop[span_39](start_span)[span_39](end_span)</span>
-            <span class="chip">LAN[span_40](start_span)[span_40](end_span)</span>
-            <span class="chip">Printer / Network Troubleshooting[span_41](start_span)[span_41](end_span)</span>
+            <span class="chip">Hardware &amp; Software Installation[span_36](start_span)[span_36](end_span)</span>
+            <span class="chip">Windows Server / Desktop[span_37](start_span)[span_37](end_span)</span>
+            <span class="chip">LAN[span_38](start_span)[span_38](end_span)</span>
+            <span class="chip">Printer / Network Troubleshooting[span_39](start_span)[span_39](end_span)</span>
           </div>
         </div>
 
         <div class="glass-card">
-          <h3 style="font-size: 1.1rem;">Software &amp; Databases</h3>
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Software &amp; Databases</h3>
           <div class="skill-chips">
-            <span class="chip">Microsoft 365[span_42](start_span)[span_42](end_span)</span>
-            <span class="chip">MS Office[span_43](start_span)[span_43](end_span)</span>
-            <span class="chip">MySQL[span_44](start_span)[span_44](end_span)</span>
-            <span class="chip">PostgreSQL[span_45](start_span)[span_45](end_span)</span>
-            <span class="chip">VS Code[span_46](start_span)[span_46](end_span)</span>
-          </div>
-        </div>
-
-        <div class="glass-card">
-          <h3 style="font-size: 1.1rem;">Operations &amp; Leadership</h3>
-          <div class="skill-chips">
-            <span class="chip">Task Tracking[span_47](start_span)[span_47](end_span)</span>
-            <span class="chip">Communication Skills[span_48](start_span)[span_48](end_span)</span>
-            <span class="chip">Teamwork[span_49](start_span)[span_49](end_span)</span>
-            <span class="chip">Attention to Detail[span_50](start_span)[span_50](end_span)</span>
+            <span class="chip">Microsoft 365[span_40](start_span)[span_40](end_span)</span>
+            <span class="chip">MS Office[span_41](start_span)[span_41](end_span)</span>
+            <span class="chip">MySQL[span_42](start_span)[span_42](end_span)</span>
+            <span class="chip">PostgreSQL[span_43](start_span)[span_43](end_span)</span>
+            <span class="chip">VS Code[span_44](start_span)[span_44](end_span)</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================
-         PAGE 4: QUALIFICATIONS & CERTIFICATIONS
+         PAGE 4: QUALIFICATIONS
     =========================================== -->
     <section id="page-qualifications" class="page-view">
       <div class="page-header">
@@ -896,45 +620,38 @@
       <div class="qual-grid">
         <div class="glass-card">
           <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Academic Education</h3>
-          <p style="color: var(--muted); font-size: 0.92rem;">Formal tertiary and secondary qualifications.</p>
-
           <div class="edu-block">
-            <span class="role-badge" style="display: inline-block; margin-bottom: 0.6rem;">2017 - 2022[span_51](start_span)[span_51](end_span)</span>
-            <div style="font-size: 1.15rem; font-weight: 800;">National Diploma in Information Technology[span_52](start_span)[span_52](end_span)</div>
-            <div style="color: var(--primary); font-weight: 700; margin-top: 0.2rem;">Tshwane University of Technology[span_53](start_span)[span_53](end_span)</div>
+            <span class="role-badge" style="display:inline-block; margin-bottom:0.5rem;">2017 - 2022[span_45](start_span)[span_45](end_span)</span>
+            <div style="font-size: 1.1rem; font-weight: 800;">National Diploma in Information Technology[span_46](start_span)[span_46](end_span)</div>
+            <div style="color: var(--primary); font-weight: 700; font-size: 0.95rem; margin-top: 0.2rem;">Tshwane University of Technology[span_47](start_span)[span_47](end_span)</div>
           </div>
-
           <div class="edu-block">
-            <span class="role-badge" style="display: inline-block; margin-bottom: 0.6rem;">2012 - 2016[span_54](start_span)[span_54](end_span)</span>
-            <div style="font-size: 1.15rem; font-weight: 800;">NSC[span_55](start_span)[span_55](end_span)</div>
-            <div style="color: var(--primary); font-weight: 700; margin-top: 0.2rem;">Makgoka High School[span_56](start_span)[span_56](end_span)</div>
+            <span class="role-badge" style="display:inline-block; margin-bottom:0.5rem;">2012 - 2016[span_48](start_span)[span_48](end_span)</span>
+            <div style="font-size: 1.1rem; font-weight: 800;">NSC[span_49](start_span)[span_49](end_span)</div>
+            <div style="color: var(--primary); font-weight: 700; font-size: 0.95rem; margin-top: 0.2rem;">Makgoka High School[span_50](start_span)[span_50](end_span)</div>
           </div>
         </div>
 
         <div class="glass-card">
           <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Professional Certificates</h3>
-          <p style="color: var(--muted); font-size: 0.92rem;">Verified industry certifications in cloud, AI, and digital literacy.</p>
-
           <div class="cert-card">
             <div class="cert-badge">☁️</div>
             <div>
-              <div style="font-weight: 800; font-size: 1.05rem;">AWS Cloud Practitioner[span_57](start_span)[span_57](end_span)</div>
+              <div style="font-weight: 800; font-size: 1.05rem;">AWS Cloud Practitioner[span_51](start_span)[span_51](end_span)</div>
               <div style="color: var(--muted); font-size: 0.88rem;">Amazon Web Services</div>
             </div>
           </div>
-
           <div class="cert-card">
             <div class="cert-badge">🤖</div>
             <div>
-              <div style="font-weight: 800; font-size: 1.05rem;">Google AI Essentials[span_58](start_span)[span_58](end_span)</div>
+              <div style="font-weight: 800; font-size: 1.05rem;">Google AI Essentials[span_52](start_span)[span_52](end_span)</div>
               <div style="color: var(--muted); font-size: 0.88rem;">Google Career Certificates</div>
             </div>
           </div>
-
           <div class="cert-card">
             <div class="cert-badge">💻</div>
             <div>
-              <div style="font-weight: 800; font-size: 1.05rem;">ICDL Profile Certificate[span_59](start_span)[span_59](end_span)</div>
+              <div style="font-weight: 800; font-size: 1.05rem;">ICDL Profile Certificate[span_53](start_span)[span_53](end_span)</div>
               <div style="color: var(--muted); font-size: 0.88rem;">International Computer Driving Licence</div>
             </div>
           </div>
@@ -943,7 +660,7 @@
     </section>
 
     <!-- ==========================================
-         PAGE 5: CONTACT ME (FORMSPREE)
+         PAGE 5: CONTACT ME (FORMSPREE AJAX)
     =========================================== -->
     <section id="page-contact" class="page-view">
       <div class="page-header">
@@ -955,14 +672,14 @@
           <div>
             <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">Let's Connect</h3>
             <p style="color: var(--muted); margin-bottom: 1.5rem; font-size: 0.96rem;">
-              Looking for an experienced IT Technician or Team Leader? Send a direct message using the form and it will go straight to my email inbox.
+              Have an IT support inquiry or professional opportunity? Send a message and it will be delivered straight to your email inbox without any redirection.
             </p>
 
             <div class="contact-channel">
               <div class="channel-icon">✉️</div>
               <div>
                 <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">EMAIL</div>
-                <div style="font-weight: 700;">Kgwadusenny@gmail.com[span_60](start_span)[span_60](end_span)</div>
+                <div style="font-weight: 700;">Kgwadusenny@gmail.com[span_54](start_span)[span_54](end_span)</div>
               </div>
             </div>
 
@@ -970,7 +687,7 @@
               <div class="channel-icon">📞</div>
               <div>
                 <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">PHONE</div>
-                <div style="font-weight: 700;">083 500 1655[span_61](start_span)[span_61](end_span)</div>
+                <div style="font-weight: 700;">083 500 1655[span_55](start_span)[span_55](end_span)</div>
               </div>
             </div>
 
@@ -978,7 +695,7 @@
               <div class="channel-icon">📍</div>
               <div>
                 <div style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">LOCATION</div>
-                <div style="font-weight: 700;">101 Francis Baard, Pretoria, 0001[span_62](start_span)[span_62](end_span)</div>
+                <div style="font-weight: 700;">101 Francis Baard, Pretoria, 0001[span_56](start_span)[span_56](end_span)</div>
               </div>
             </div>
           </div>
@@ -1004,7 +721,7 @@
               <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
             </div>
 
-            <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%;">Send Message</button>
+            <button type="submit" id="submit-btn" class="btn-main" style="width: 100%;">Send Message</button>
             <p id="form-status" class="status-msg" aria-live="polite"></p>
           </form>
         </div>
@@ -1018,44 +735,29 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Multi-Page Tab Switching Logic
       const tabButtons = document.querySelectorAll('.tab-btn');
       const jumpButtons = document.querySelectorAll('.nav-jump, .brand');
       const pages = document.querySelectorAll('.page-view');
       const navTabsContainer = document.getElementById('nav-tabs');
 
       function switchPage(pageId) {
-        pages.forEach(page => {
-          page.classList.remove('active');
-        });
-        tabButtons.forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.target === pageId);
-        });
+        pages.forEach(page => page.classList.remove('active'));
+        tabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.target === pageId));
 
         const targetPage = document.getElementById(`page-${pageId}`);
         if (targetPage) {
           targetPage.classList.add('active');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
         navTabsContainer.classList.remove('open');
       }
 
-      tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => switchPage(btn.dataset.target));
-      });
+      tabButtons.forEach(btn => btn.addEventListener('click', () => switchPage(btn.dataset.target)));
+      jumpButtons.forEach(btn => btn.addEventListener('click', () => switchPage(btn.dataset.target)));
 
-      jumpButtons.forEach(btn => {
-        btn.addEventListener('click', () => switchPage(btn.dataset.target));
-      });
-
-      // 2. Mobile Menu Toggle
       const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      mobileMenuBtn.addEventListener('click', () => {
-        navTabsContainer.classList.toggle('open');
-      });
+      mobileMenuBtn.addEventListener('click', () => navTabsContainer.classList.toggle('open'));
 
-      // 3. Dark / Light Mode Toggle
       const themeToggle = document.getElementById('theme-toggle');
       const savedTheme = localStorage.getItem('cm-portfolio-theme');
 
@@ -1071,21 +773,7 @@
         localStorage.setItem('cm-portfolio-theme', isLight ? 'light' : 'dark');
       });
 
-      // 4. Quick Copy Email Button
-      const copyBtn = document.getElementById('quick-copy-email');
-      if (copyBtn) {
-        copyBtn.addEventListener('click', () => {
-          navigator.clipboard.writeText('Kgwadusenny@gmail.com').then(() => {
-            const prev = copyBtn.textContent;
-            copyBtn.textContent = '✓ Email Copied';
-            setTimeout(() => {
-              copyBtn.textContent = prev;
-            }, 2500);
-          });
-        });
-      }
-
-      // 5. Formspree AJAX Submission (No redirection)
+      // Formspree AJAX Submission without redirection
       const contactForm = document.getElementById('contact-form');
       const formStatus = document.getElementById('form-status');
       const submitBtn = document.getElementById('submit-btn');
