@@ -7,318 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --border: #e2e8f0;
-      --badge-bg: #eff6ff;
-      --badge-text: #1e40af;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* Navigation */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .logo span {
-      color: var(--primary);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-
-    nav a:hover {
-      color: var(--primary);
-    }
-
-    /* Main Container */
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2.5rem;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-    }
-
-    .hero-tag {
-      display: inline-block;
-      background: var(--badge-bg);
-      color: var(--badge-text);
-      font-weight: 600;
-      font-size: 0.85rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      margin-bottom: 1rem;
-    }
-
-    .hero h1 {
-      font-size: 2.25rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-bottom: 1.75rem;
-    }
-
-    .hero-contact span {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--primary);
-      color: #ffffff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn:hover {
-      background: var(--primary-dark);
-    }
-
-    /* Sections */
-    section {
-      margin-bottom: 2.5rem;
-    }
-
-    .section-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border);
-    }
-
-    /* Cards & Timeline */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem;
-      margin-bottom: 1.25rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-    }
-
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .job-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
-    .job-company {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .job-date {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--muted);
-      background: var(--bg);
-      padding: 0.25rem 0.65rem;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
-
-    .card ul {
-      padding-left: 1.25rem;
-      color: var(--muted);
-    }
-
-    .card li {
-      margin-bottom: 0.45rem;
-    }
-
-    /* Two-column Grid for Education & Certs */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
-    }
-
-    /* Skills Badges */
-    .skills-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .skill-badge {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.45rem 0.9rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    /* Contact Form */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 2rem;
-    }
-
-    .contact-info p {
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .contact-detail {
-      margin-bottom: 0.85rem;
-      font-size: 0.95rem;
-    }
-
-    .contact-detail strong {
-      display: block;
-      color: var(--text);
-    }
-
-    .form-group {
-      margin-bottom: 1.1rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.7rem 0.9rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      background: var(--bg);
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      background: #ffffff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-      border-top: 1px solid var(--border);
-    }
-
-    @media (max-width: 768px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      nav ul {
-        gap: 1rem;
-        font-size: 0.85rem;
-      }
-
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -326,122 +15,132 @@
   <header>
     <div class="nav-container">
       <a href="#" class="logo">Comfort<span>.</span></a>
-      <nav>
+
+      <nav id="nav-menu">
         <ul>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact Me</a></li>
+          <li><a href="#about" class="nav-link active">About</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#contact" class="nav-link">Contact Me</a></li>
         </ul>
       </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">🌙</button>
+        <button id="menu-toggle" class="icon-btn mobile-only" aria-label="Open Menu">☰</button>
+      </div>
     </div>
   </header>
 
   <main>
     <!-- Hero / Profile -->
-    <section class="hero" id="about">
+    <section class="hero reveal" id="about">
       <span class="hero-tag">IT Technician &amp; Team Leader</span>
       <h1>Comfort Mabelane</h1>
       <p class="hero-subtitle">
-        Dedicated IT Technician with a National Diploma in Information Technology and 2 years of experience in ICT end-user support and desktop technical support. Proven in setup, configuration, and installation of hardware, software, and hardware maintenance, resolving faults within SLAs[span_0](start_span)[span_0](end_span).
+        Dedicated IT Technician with a National Diploma in Information Technology and 2 years of experience in ICT end-user support and desktop technical support[span_1](start_span)[span_1](end_span). Proven in setup, configuration, and installation of hardware, software, and hardware maintenance, resolving faults within SLAs[span_2](start_span)[span_2](end_span).
       </p>
       <div class="hero-contact">
-        <span>📍 101 Francis Baard, Pretoria, 0001[span_1](start_span)[span_1](end_span)</span>
-        <span>📞 083 500 1655[span_2](start_span)[span_2](end_span)</span>
-        <span>✉️ Kgwadusenny@gmail.com[span_3](start_span)[span_3](end_span)</span>
+        <span>📍 101 Francis Baard, Pretoria, 0001[span_3](start_span)[span_3](end_span)</span>
+        <span>📞 083 500 1655[span_4](start_span)[span_4](end_span)</span>
+        <span>✉️ Kgwadusenny@gmail.com[span_5](start_span)[span_5](end_span)</span>
       </div>
-      <a href="#contact" class="btn">Get in Touch</a>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn">Get in Touch</a>
+        <button id="copy-email-btn" class="btn btn-outline">Copy Email</button>
+      </div>
     </section>
 
     <!-- Employment History -->
-    <section id="experience">
+    <section id="experience" class="reveal">
       <h2 class="section-title">Employment History</h2>
 
       <div class="card">
         <div class="job-header">
           <div>
-            <div class="job-title">Team Leader</div>
-            <div class="job-company">Department of Home Affairs[span_4](start_span)[span_4](end_span)</div>
+            <div class="job-title">Team Leader[span_6](start_span)[span_6](end_span)</div>
+            <div class="job-company">Department of Home Affairs[span_7](start_span)[span_7](end_span)</div>
           </div>
-          <span class="job-date">Feb 2024 – Mar 2026[span_5](start_span)[span_5](end_span)</span>
+          <span class="job-date">Feb 2024 – Mar 2026[span_8](start_span)[span_8](end_span)</span>
         </div>
         <ul>
-          <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment[span_6](start_span)[span_6](end_span).</li>
-          <li>Providing guidance and support while keeping the team informed about changes, updates, and important information[span_7](start_span)[span_7](end_span).</li>
-          <li>Tracking progress by regularly reviewing the team's performance and productivity, and maintaining necessary records, reports, and documentation[span_8](start_span)[span_8](end_span).</li>
-          <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements[span_9](start_span)[span_9](end_span).</li>
+          <li>Guiding the team towards achieving goals while fostering a positive, productive, and collaborative work environment[span_9](start_span)[span_9](end_span).</li>
+          <li>Providing guidance and support while keeping the team informed about changes, updates, and important information[span_10](start_span)[span_10](end_span).</li>
+          <li>Tracking progress by regularly reviewing the team's performance and productivity, and maintaining necessary records, reports, and documentation[span_11](start_span)[span_11](end_span).</li>
+          <li>Providing regular updates and reports to upper management on team performance, challenges, and achievements[span_12](start_span)[span_12](end_span).</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="job-header">
           <div>
-            <div class="job-title">IT Help Desk &amp; Support</div>
-            <div class="job-company">LEDET[span_10](start_span)[span_10](end_span)</div>
+            <div class="job-title">IT Help Desk &amp; Support[span_13](start_span)[span_13](end_span)</div>
+            <div class="job-company">LEDET[span_14](start_span)[span_14](end_span)</div>
           </div>
-          <span class="job-date">Mar 2021 – Oct 2023[span_11](start_span)[span_11](end_span)</span>
+          <span class="job-date">Mar 2021 – Oct 2023[span_15](start_span)[span_15](end_span)</span>
         </div>
         <ul>
-          <li>Set up, configured, and installed new hardware equipment and peripherals to LAN[span_12](start_span)[span_12](end_span).</li>
-          <li>Performed software and hardware maintenance and maintained an inventory of hardware devices[span_13](start_span)[span_13](end_span).</li>
-          <li>Provided efficient technical support to all end users and investigated/resolved hardware and software faults[span_14](start_span)[span_14](end_span).</li>
-          <li>Ensured daily service-level agreements were met[span_15](start_span)[span_15](end_span).</li>
+          <li>Set up, configured, and installed new hardware equipment and peripherals to LAN[span_16](start_span)[span_16](end_span).</li>
+          <li>Performed software and hardware maintenance and maintained an inventory of hardware devices[span_17](start_span)[span_17](end_span).</li>
+          <li>Provided efficient technical support to all end users and investigated and resolved hardware and software faults[span_18](start_span)[span_18](end_span).</li>
+          <li>Ensured daily service-level agreements were met[span_19](start_span)[span_19](end_span).</li>
         </ul>
       </div>
     </section>
 
     <!-- Education & Certificates -->
-    <section id="education">
+    <section id="education" class="reveal">
       <h2 class="section-title">Education &amp; Certifications</h2>
       <div class="grid-2">
         <div class="card">
-          <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Education</h3>
-          <div style="margin-bottom: 1.25rem;">
-            <div class="job-title" style="font-size: 1rem;">National Diploma in Information Technology[span_16](start_span)[span_16](end_span)</div>
-            <div class="job-company">Tshwane University of Technology[span_17](start_span)[span_17](end_span)</div>
-            <div style="font-size: 0.85rem; color: var(--muted);">2017 – 2022[span_18](start_span)[span_18](end_span)</div>
+          <h3 class="card-subtitle">Education</h3>
+          <div class="edu-item">
+            <div class="job-title">National Diploma in Information Technology[span_20](start_span)[span_20](end_span)</div>
+            <div class="job-company">Tshwane University of Technology[span_21](start_span)[span_21](end_span)</div>
+            <div class="muted-date">2017 – 2022[span_22](start_span)[span_22](end_span)</div>
           </div>
-          <div>
-            <div class="job-title" style="font-size: 1rem;">NSC[span_19](start_span)[span_19](end_span)</div>
-            <div class="job-company">Makgoka High School[span_20](start_span)[span_20](end_span)</div>
-            <div style="font-size: 0.85rem; color: var(--muted);">2012 – 2016[span_21](start_span)[span_21](end_span)</div>
+          <div class="edu-item">
+            <div class="job-title">NSC[span_23](start_span)[span_23](end_span)</div>
+            <div class="job-company">Makgoka High School[span_24](start_span)[span_24](end_span)</div>
+            <div class="muted-date">2012 – 2016[span_25](start_span)[span_25](end_span)</div>
           </div>
         </div>
 
         <div class="card">
-          <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Certificates</h3>
+          <h3 class="card-subtitle">Certificates</h3>
           <ul>
-            <li><strong>AWS Cloud Practitioner</strong>[span_22](start_span)[span_22](end_span)</li>
-            <li><strong>Google AI Essentials</strong>[span_23](start_span)[span_23](end_span)</li>
-            <li><strong>ICDL Profile Certificate</strong>[span_24](start_span)[span_24](end_span)</li>
+            <li><strong>AWS Cloud Practitioner</strong>[span_26](start_span)[span_26](end_span)</li>
+            <li><strong>Google AI Essentials</strong>[span_27](start_span)[span_27](end_span)</li>
+            <li><strong>ICDL Profile Certificate</strong>[span_28](start_span)[span_28](end_span)</li>
           </ul>
-          <p style="margin-top: 1.25rem; font-size: 0.9rem; color: var(--muted);">
-            <em>References: Upon Request[span_25](start_span)[span_25](end_span)</em>
+          <p class="reference-note">
+            <em>References: Upon Request[span_29](start_span)[span_29](end_span)</em>
           </p>
         </div>
       </div>
     </section>
 
     <!-- Skills -->
-    <section id="skills">
+    <section id="skills" class="reveal">
       <h2 class="section-title">Technical &amp; Professional Skills</h2>
       <div class="skills-wrap">
-        <span class="skill-badge">Hardware &amp; Software Installation[span_26](start_span)[span_26](end_span)</span>
-        <span class="skill-badge">Windows Server / Desktop[span_27](start_span)[span_27](end_span)</span>
-        <span class="skill-badge">Printer / Network Troubleshooting &amp; LAN[span_28](start_span)[span_28](end_span)</span>
-        <span class="skill-badge">Microsoft 365 &amp; MS Office[span_29](start_span)[span_29](end_span)</span>
-        <span class="skill-badge">MySQL[span_30](start_span)[span_30](end_span)</span>
-        <span class="skill-badge">PostgreSQL[span_31](start_span)[span_31](end_span)</span>
-        <span class="skill-badge">VS Code[span_32](start_span)[span_32](end_span)</span>
-        <span class="skill-badge">Task Tracking[span_33](start_span)[span_33](end_span)</span>
-        <span class="skill-badge">Communication Skills[span_34](start_span)[span_34](end_span)</span>
-        <span class="skill-badge">Teamwork[span_35](start_span)[span_35](end_span)</span>
-        <span class="skill-badge">Attention to Detail[span_36](start_span)[span_36](end_span)</span>
+        <span class="skill-badge">Hardware &amp; Software Installation[span_30](start_span)[span_30](end_span)</span>
+        <span class="skill-badge">Windows Server / Desktop[span_31](start_span)[span_31](end_span)</span>
+        <span class="skill-badge">Printer / Network Troubleshooting &amp; LAN[span_32](start_span)[span_32](end_span)</span>
+        <span class="skill-badge">Microsoft 365 &amp; MS Office[span_33](start_span)[span_33](end_span)</span>
+        <span class="skill-badge">MySQL[span_34](start_span)[span_34](end_span)</span>
+        <span class="skill-badge">PostgreSQL[span_35](start_span)[span_35](end_span)</span>
+        <span class="skill-badge">VS Code[span_36](start_span)[span_36](end_span)</span>
+        <span class="skill-badge">Task Tracking[span_37](start_span)[span_37](end_span)</span>
+        <span class="skill-badge">Communication Skills[span_38](start_span)[span_38](end_span)</span>
+        <span class="skill-badge">Teamwork[span_39](start_span)[span_39](end_span)</span>
+        <span class="skill-badge">Attention to Detail[span_40](start_span)[span_40](end_span)</span>
       </div>
     </section>
 
     <!-- Contact Me Form (Formspree) -->
-    <section id="contact">
+    <section id="contact" class="reveal">
       <h2 class="section-title">Contact Me</h2>
       <div class="card">
         <div class="contact-grid">
@@ -449,20 +148,19 @@
             <p>Have a question, inquiry, or professional opportunity? Fill out the form and it will be sent straight to my inbox.</p>
             <div class="contact-detail">
               <strong>Email</strong>
-              Kgwadusenny@gmail.com[span_37](start_span)[span_37](end_span)
+              Kgwadusenny@gmail.com[span_41](start_span)[span_41](end_span)
             </div>
             <div class="contact-detail">
               <strong>Phone</strong>
-              083 500 1655[span_38](start_span)[span_38](end_span)
+              083 500 1655[span_42](start_span)[span_42](end_span)
             </div>
             <div class="contact-detail">
               <strong>Location</strong>
-              101 Francis Baard, Pretoria, 0001[span_39](start_span)[span_39](end_span)
+              101 Francis Baard, Pretoria, 0001[span_43](start_span)[span_43](end_span)
             </div>
           </div>
 
-          <!-- Formspree Endpoint Integrated -->
-          <form action="https://formspree.io/f/xljbjonr" method="POST">
+          <form id="contact-form" action="https://formspree.io/f/xljbjonr" method="POST">
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Your name" required />
@@ -483,7 +181,8 @@
               <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
             </div>
 
-            <button type="submit" class="btn">Send Message</button>
+            <button type="submit" id="submit-btn" class="btn">Send Message</button>
+            <p id="form-status" class="form-status" aria-live="polite"></p>
           </form>
         </div>
       </div>
@@ -494,5 +193,6 @@
     &copy; 2026 Comfort Mabelane. All rights reserved.
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
